@@ -35,6 +35,13 @@ _(Rendered headlessly with generated sample covers.)_
 
 Not in this release (by design): Bottles, Lutris, Heroic, online metadata. The code is structured so these can be added later (see *Architecture*).
 
+## Quick start
+
+1. Install Wine, or install Steam and a Proton build if you want to use Proton.
+2. Launch VineDeck and choose **Add Your First Application** (or **+ Add Application** when the library is not empty).
+3. Select the Windows `.exe` or `.lnk` file. Set a working directory, launch arguments, environment variables, or an existing Wine prefix if needed.
+4. Save the entry, then launch it from your library.
+
 ## Using Proton from Steam
 
 VineDeck looks for Proton in every place Steam keeps it, so there is nothing to configure:
