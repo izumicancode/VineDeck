@@ -95,7 +95,16 @@ pytest                      # runs headless (offscreen Qt); Wine is never launch
 
 If you have installed the dependencies but not the editable package, start from the repository root with `PYTHONPATH=src python -m vinedeck`.
 
-Useful environment variables: `XDG_CONFIG_HOME`, `XDG_DATA_HOME`, `XDG_CACHE_HOME` (point them at a temp dir for a throw-away profile). `python -m vinedeck --debug` enables debug logging.
+To run with an isolated, throw-away profile, point the XDG directories at a temporary location:
+
+```bash
+XDG_CONFIG_HOME=/tmp/vinedeck-test/config \
+XDG_DATA_HOME=/tmp/vinedeck-test/data \
+XDG_CACHE_HOME=/tmp/vinedeck-test/cache \
+python -m vinedeck
+```
+
+Run `python -m vinedeck --debug` to enable debug logging.
 
 ### Where things are stored
 
