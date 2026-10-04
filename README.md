@@ -39,6 +39,8 @@ Not in this release (by design): Bottles, Lutris, Heroic, online metadata. The c
 
 VineDeck looks for Proton in every place Steam keeps it, so there is nothing to configure:
 
+Install an official Proton version from Steam's **Library → Tools**. VineDeck discovers installed builds; it does not download or update Proton for you.
+
 | Location | What it finds |
 |----------|---------------|
 | `<steam>/steamapps/common/Proton*` | Official Proton builds installed from Steam (*Library → Tools*) |
