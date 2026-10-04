@@ -244,7 +244,17 @@ builds are settled.
 
 ## Keyboard shortcuts
 
-`Ctrl+F` search · `Ctrl+N` add · `Ctrl+,` settings · `Ctrl+B` toggle sidebar · `Enter` launch selected · `Delete` remove selected · `Esc` back / clear search / close dialog · `F11` fullscreen · `Ctrl+Q` quit
+| Action | Shortcut |
+|--------|----------|
+| Search | `Ctrl+F` |
+| Add an application | `Ctrl+N` |
+| Open settings | `Ctrl+,` |
+| Toggle the sidebar | `Ctrl+B` |
+| Launch the selected application | `Enter` |
+| Remove the selected application | `Delete` |
+| Go back, clear search, or close a dialog | `Esc` |
+| Toggle fullscreen | `F11` |
+| Quit VineDeck | `Ctrl+Q` |
 
 ## Contributing
 
