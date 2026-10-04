@@ -148,6 +148,8 @@ chmod +x VineDeck-*.AppImage
 ./VineDeck-*.AppImage
 ```
 
+To verify the download, also download `SHA256SUMS` from the release and run `sha256sum --check SHA256SUMS` in the directory containing both files.
+
 If FUSE is unavailable, launch it with `--appimage-extract-and-run` instead.
 
 ### Build an AppImage (any x86_64 Linux distro)
