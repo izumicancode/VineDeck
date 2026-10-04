@@ -155,8 +155,7 @@ and the license files (`LICENSE`, `NOTICE`). Afterwards VineDeck appears in your
 ### Publishing to the AUR
 
 1. Push the code to GitHub and tag a release (for example `v0.1.0`).
-2. In `packaging/PKGBUILD`, switch `source=` to the release tarball (the instructions are in the comment at the top of the
-   file), then run `updpkgsums`.
+2. In `packaging/PKGBUILD`, set `source=` to the tagged GitHub archive (for example, `https://github.com/izumicancode/VineDeck/archive/refs/tags/v$pkgver.tar.gz`), then run `updpkgsums`.
 3. Test in a clean chroot with `extra-x86_64-build` (from `devtools`), then run `makepkg --printsrcinfo > .SRCINFO` and
    push the `PKGBUILD` and `.SRCINFO` to your AUR repository.
 
