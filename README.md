@@ -14,6 +14,12 @@ A modern, customisable library and launcher for Windows applications and games t
 
 _(Rendered headlessly with generated sample covers.)_
 
+## Requirements
+
+- VineDeck runs on Linux. The native package recipe targets Arch Linux; the AppImage targets x86_64 Linux.
+- Wine is needed to launch Windows applications. Install Steam as well if you want to use Steam Proton.
+- Running from source requires Python 3.11 or newer. The AppImage bundles Python and the Python libraries used by VineDeck.
+
 ## Features
 
 - Add a `.exe` (or `.lnk`) with its own **Wine prefix**, working directory, launch arguments and environment variables
