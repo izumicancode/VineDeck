@@ -1,0 +1,211 @@
+# VineDeck
+
+A modern, customisable library and launcher for Windows applications and games that run through **Wine**, built for Arch Linux with Python 3, PySide6 (Qt 6), SQLite and Pillow.
+
+> VineDeck is a working title. The name lives in one place, `src/vinedeck/branding.py`
+> (plus the packaging files), so it is easy to change.
+
+<!-- Screenshots: add images to docs/ and link them here -->
+## Screenshots
+
+![Library](docs/library.png)
+![Details](docs/details.png)
+![List view](docs/list-view.png)
+
+_(Rendered headlessly with generated sample covers.)_
+
+## Features
+
+- Add a `.exe` (or `.lnk`) with its own **Wine prefix**, working directory, launch arguments and environment variables
+- Grid, compact grid, list and large-cover views; sorting; drag-and-drop custom order
+- Fully adjustable card grid (columns, size, gaps, radius, what is shown) that applies instantly
+- Cover images (PNG/JPG/WEBP) stored in VineDeck’s own data folder, with cached thumbnails; icons extracted from executables when possible
+- Categories, favourites, Recently/Most Played, as-you-type search
+- Launch state (Launching… / Running / Closed / Failed) without blocking the UI; games keep running if you close the launcher
+- Dark / light / system theme, accent colour, optional blurred custom background
+- Export / import your library as JSON (optionally with artwork)
+- **Steam Proton support**: Proton builds are detected automatically and can be switched with System Wine from the top bar or *Settings → Wine* (see below)
+- Friendly error dialogs, rotating logs, keyboard shortcuts, tooltips and accessible names
+
+Not in this release (by design): Bottles, Lutris, Heroic, online metadata. The code is structured so these can be added later (see *Architecture*).
+
+## Using Proton from Steam
+
+VineDeck looks for Proton in every place Steam keeps it, so there is nothing to configure:
+
+| Location | What it finds |
+|----------|---------------|
+| `<steam>/steamapps/common/Proton*` | Official Proton builds installed from Steam (*Library → Tools*) |
+| `<steam>/compatibilitytools.d/` | GE-Proton and other custom builds (e.g. from ProtonUp-Qt) |
+| `/usr/share/steam/compatibilitytools.d/` | System-wide installs such as the AUR `proton-ge-custom` |
+| Extra library folders in `libraryfolders.vdf` | Proton installed on another drive |
+
+Native, Flatpak and Snap Steam installs are all checked. If at least one Proton build is found, a **runner switcher**
+appears in the top bar; the same list is in *Settings → Wine → Runner* (with a **Rescan** button). The choice applies to every
+application and is remembered. Switch back to *System Wine* at any time.
+
+How Proton is launched: VineDeck runs `proton run <exe>` with `STEAM_COMPAT_DATA_PATH` and
+`STEAM_COMPAT_CLIENT_INSTALL_PATH` set, which is what Steam does.
+
+* **Prefixes.** Proton keeps its prefix in `<compatdata>/pfx`. An application *without* a prefix gets its own, created in
+  `~/.local/share/vinedeck/proton/app-<id>`. If an application's prefix is a Steam `compatdata/<appid>` folder (or its `pfx`
+  folder), it is used directly, so you can reuse a prefix Steam already made. If it is a plain Wine prefix, VineDeck creates a
+  `pfx` symlink to it inside its own `proton/linked/` folder and never adds files to your prefix folder.
+* **Heads-up:** a prefix first used with Proton is upgraded by Proton, and may no longer work with plain Wine afterwards.
+  Keep separate prefixes for Wine and Proton, or back up before switching an existing one.
+* Per-application environment variables work as usual (`PROTON_LOG=1`, `PROTON_USE_WINED3D=1`, `DXVK_HUD=…`).
+* Proton is started directly (outside Steam's container runtime). That works for GE-Proton and normally for Valve's builds; if a
+  Valve build refuses to start, try GE-Proton.
+
+## Installation (Arch Linux)
+
+```bash
+sudo pacman -S wine            # if you do not have it yet
+git clone <this repo> vinedeck && cd vinedeck/packaging
+makepkg -si
+```
+
+The PKGBUILD installs the Python package, a `vinedeck` command, the `.desktop` entry and the icon. It builds from the surrounding source tree; for the AUR switch it to a release tarball (instructions are in the file).
+
+## Development
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -e ".[dev]"
+python -m vinedeck          # or: vinedeck
+pytest                      # runs headless (offscreen Qt); Wine is never launched in tests
+```
+
+Useful environment variables: `XDG_CONFIG_HOME`, `XDG_DATA_HOME`, `XDG_CACHE_HOME` (point them at a temp dir for a throw-away profile). `python -m vinedeck --debug` enables debug logging.
+
+### Where things are stored
+
+| What | Location |
+|------|----------|
+| Preferences | `~/.config/vinedeck/config.json` |
+| Database, artwork, logs | `~/.local/share/vinedeck/` (`library.db`, `artwork/`, `logs/`) |
+| Thumbnails and theme cache (safe to delete) | `~/.cache/vinedeck/` |
+
+### Architecture
+
+```
+src/vinedeck/
+  core/       wine detection, launch-command construction, async process manager, library filtering,
+              metadata provider interface, prefix discovery
+  database/   SQLite access, models, versioned migrations (PRAGMA user_version)
+  services/   images (Pillow), exe icon extraction, export/import, filesystem helpers, metadata service
+  ui/         Qt widgets: main window, model/delegate/view, dialogs, settings, theme
+  utils/      XDG paths, JSON settings, logging, platform helpers
+```
+
+Launching is split in two: `core/launcher.py` validates an application and builds an **argument array** and environment (no shell, `shlex` for user arguments); `core/runners.py` discovers Steam/Proton installs and `core/wine_manager.py` validates the selected runner; `core/process_manager.py` starts it with `subprocess.Popen(..., shell=False, start_new_session=True)` and watches it from a worker thread. Proton uses the same function with the `runner=` argument. To support another runner later (Bottles…), extend `build_launch_spec` the same way. External metadata sources plug in via `MetadataProvider` / `MetadataService`.
+
+## Packaging
+
+VineDeck is a normal Python package that ships a `vinedeck` command, a desktop entry and an icon, so it installs as a
+regular desktop app. `packaging/PKGBUILD`, `packaging/vinedeck.desktop` and `src/vinedeck/resources/icons/vinedeck.svg`
+are everything a package needs. Wheel build: `python -m build`.
+
+### Build and install as a desktop app (Arch Linux)
+
+```bash
+sudo pacman -S --needed base-devel python-build python-installer python-setuptools python-wheel \
+                        pyside6 python-pillow wine
+cd packaging
+makepkg -si          # builds and installs the package
+```
+
+This installs the `vinedeck` command, the application-menu entry (`/usr/share/applications/vinedeck.desktop`), the icon
+and the license files (`LICENSE`, `NOTICE`). Afterwards VineDeck appears in your launcher like any other app. To remove it:
+`sudo pacman -R vinedeck`.
+
+### Publishing to the AUR
+
+1. Push the code to GitHub and tag a release (for example `v0.1.0`).
+2. In `packaging/PKGBUILD`, switch `source=` to the release tarball (the instructions are in the comment at the top of the
+   file), then run `updpkgsums`.
+3. Test in a clean chroot with `extra-x86_64-build` (from `devtools`), then run `makepkg --printsrcinfo > .SRCINFO` and
+   push the `PKGBUILD` and `.SRCINFO` to your AUR repository.
+
+### Build an AppImage (any x86_64 Linux distro)
+
+An AppImage is a single file that bundles Python, Qt (PySide6) and Pillow, so users need to install nothing except Wine
+and/or Steam, which VineDeck uses from the host.
+
+```bash
+packaging/appimage/build-appimage.sh
+# -> dist/VineDeck-<version>-x86_64.AppImage   (about 85 MB)
+```
+
+The build machine needs `bash`, `curl`, and `python3` with `pip` and `setuptools`/`wheel` (`sudo pacman -S python-pip
+python-setuptools python-wheel`). The script downloads a portable Python (from
+[python-appimage](https://github.com/niess/python-appimage)) and `appimagetool` once and caches them in
+`~/.cache/vinedeck-build`. It then installs VineDeck into that Python, trims files that are not needed at runtime, runs a smoke
+test (`--version` and a headless Qt start) and packs the result.
+
+Run it, or install it like any other app:
+
+```bash
+chmod +x dist/VineDeck-*.AppImage
+./dist/VineDeck-*.AppImage
+./dist/VineDeck-*.AppImage --version
+./dist/VineDeck-*.AppImage --appimage-extract-and-run     # if FUSE is not available
+```
+
+Running an AppImage needs FUSE 2 on the host (`sudo pacman -S fuse2`), or use `--appimage-extract-and-run` as above.
+To get a menu entry, use a tool such as [Gear Lever](https://github.com/pkgforge-dev/Gear-Lever) or
+[AppImageLauncher](https://github.com/TheAssassin/AppImageLauncher).
+
+On X11, Qt needs `libxcb-cursor` from the host (Arch: `xcb-util-cursor`; Debian/Ubuntu: `libxcb-cursor0`). Wayland sessions work
+without it.
+
+Build options (environment variables):
+
+| Variable | Default | Meaning |
+|----------|---------|---------|
+| `PYTHON_VERSION` | `3.12` | Bundled Python version |
+| `QT_PACKAGE` | `PySide6-Essentials` | Qt requirement installed into the bundle (the app only uses QtCore, QtGui, QtWidgets and QtSvg) |
+| `BASE_IMAGE` / `APPIMAGETOOL` | downloaded | Paths to local copies, for offline builds |
+| `CACHE_DIR` | `~/.cache/vinedeck-build` | Download cache |
+| `SKIP_TEST=1` | off | Skip the smoke test |
+
+The downloaded tools are not checksum-verified by the script; if you publish AppImages, build in CI from pinned copies
+(set `BASE_IMAGE` and `APPIMAGETOOL`). Only x86_64 is supported by the script.
+
+### Flatpak
+
+Not included yet. A Flatpak needs the KDE or Freedesktop runtime, and its sandbox cannot see the host's Wine, Steam or Proton by
+default, so it would require extra filesystem permissions and `flatpak-spawn`. It is best left until the Arch and AppImage
+builds are settled.
+
+### Release checklist
+
+- Keep the version in sync in `pyproject.toml`, `src/vinedeck/__init__.py` and `packaging/PKGBUILD`.
+- Run `pytest` (it runs headless; Wine and Proton are never launched).
+- Refresh the screenshots in `docs/` if the UI changed (for example the runner switcher in the top bar).
+- Test the install on a clean system or chroot: the menu entry appears, the icon shows, and the app starts from the launcher.
+- Rebuild the AppImage (`packaging/appimage/build-appimage.sh`) and start it once on a real desktop session.
+
+## Troubleshooting
+
+- **“Wine is not available” banner** – install `wine`, or set the binary under *Settings → Wine* and press *Detect Wine*.
+- **“The selected Wine prefix does not exist”** – prefixes must exist before use. Create one with `WINEPREFIX=~/Games/MyGame wineboot`.
+- **Application closes immediately (“Failed”)** – open *View Details* in the dialog or read `~/.local/share/vinedeck/logs/launch-<id>.log` for Wine’s output.
+- **No tray/window icon on Wayland** – make sure the `.desktop` file is installed (the app id is `vinedeck`).
+- **Blank rendering on odd GPUs** – try `QT_QUICK_BACKEND=software` or `QT_QPA_PLATFORM=xcb`/`wayland` explicitly.
+- Logs: `~/.local/share/vinedeck/logs/vinedeck.log`.
+
+## Keyboard shortcuts
+
+`Ctrl+F` search · `Ctrl+N` add · `Ctrl+,` settings · `Ctrl+B` toggle sidebar · `Enter` launch selected · `Delete` remove selected · `Esc` back / clear search / close dialog · `F11` fullscreen · `Ctrl+Q` quit
+
+## Contributing
+
+Issues and pull requests are welcome. Please run `pytest` before submitting, keep UI code free of business logic (put it in `core/` or `services/` with tests), and never launch real Wine from tests – mock `subprocess`.
+
+## License
+
+VineDeck is licensed under the [Apache License 2.0](LICENSE). See `NOTICE` for attribution.
+
+Created by [izumicancode](https://github.com/izumicancode).

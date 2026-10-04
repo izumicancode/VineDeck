@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vinedeck"
+version = "0.1.0"
+description = "A beautiful library and launcher for Windows applications and games running through Wine & Proton"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "Apache-2.0" }
+authors = [{ name = "izumicancode", email = "altavhusayn@gmail.com" }]
+classifiers = ["License :: OSI Approved :: Apache Software License"]
+dependencies = ["PySide6>=6.5", "Pillow>=10.0"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[project.urls]
+Homepage = "https://github.com/izumicancode"
+
+[project.scripts]
+vinedeck = "vinedeck.main:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+vinedeck = ["resources/icons/*.svg"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

@@ -1,0 +1,44 @@
+# Maintainer: izumicancode <https://github.com/izumicancode>
+#
+# This PKGBUILD builds from the working tree it lives in (packaging/ inside the repo),
+# which is convenient for local installs:   cd packaging && makepkg -si
+# For the AUR, replace the `_srcdir` handling with a release tarball:
+#   source=("$pkgname-$pkgver.tar.gz::https://example.com/vinedeck/archive/v$pkgver.tar.gz")
+#   sha256sums=('...')   # run `updpkgsums`
+# and `cd "$pkgname-$pkgver"` instead of "$_srcdir".
+
+pkgname=vinedeck
+pkgver=0.1.0
+pkgrel=1
+pkgdesc='Library and launcher for Windows applications and games running through Wine'
+arch=('any')
+url='https://github.com/izumicancode'
+license=('Apache-2.0')
+depends=('python' 'pyside6' 'python-pillow')
+optdepends=('wine: run Windows applications'
+            'wine-staging: alternative Wine build'
+            'qt6-imageformats: extra image formats')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+_srcdir="$startdir/.."
+
+build() {
+  cd "$_srcdir"
+  python -m build --wheel --no-isolation --outdir "$srcdir/dist"
+}
+
+check() {
+  cd "$_srcdir"
+  # Optional: needs python-pytest; offscreen Qt avoids needing a display.
+  # QT_QPA_PLATFORM=offscreen PYTHONPATH=src python -m pytest -q
+  :
+}
+
+package() {
+  cd "$_srcdir"
+  python -m installer --destdir="$pkgdir" "$srcdir"/dist/*.whl
+  install -Dm644 packaging/vinedeck.desktop "$pkgdir/usr/share/applications/vinedeck.desktop"
+  install -Dm644 src/vinedeck/resources/icons/vinedeck.svg \
+    "$pkgdir/usr/share/icons/hicolor/scalable/apps/vinedeck.svg"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 NOTICE "$pkgdir/usr/share/licenses/$pkgname/NOTICE"
+}

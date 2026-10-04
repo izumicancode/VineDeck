@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Version=1.5
+Name=VineDeck
+GenericName=Wine Library
+Comment=Library and launcher for Windows applications and games running through Wine
+Exec=vinedeck
+Icon=vinedeck
+Terminal=false
+Categories=Game;Utility;
+Keywords=wine;windows;games;launcher;library;
+StartupNotify=true
+StartupWMClass=vinedeck
