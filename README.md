@@ -91,6 +91,7 @@ python -m venv .venv
 source .venv/bin/activate
 pip install -e ".[dev]"
 python -m vinedeck          # or: vinedeck
+python -m vinedeck --version
 pytest                      # runs headless (offscreen Qt); Wine is never launched in tests
 ```
 
