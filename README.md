@@ -37,7 +37,7 @@ Not currently supported: managing Bottles, Lutris, or Heroic installations, and 
 
 1. Install Wine, or install Steam and a Proton build if you want to use Proton.
 2. Launch VineDeck and choose **Add Your First Application** (or **+ Add Application** when the library is not empty).
-3. Select the Windows `.exe` or `.lnk` file. Set a working directory, launch arguments, environment variables, or an existing Wine prefix if needed.
+3. Select the Windows `.exe` or `.lnk` file. Set a working directory, launch arguments, environment variables, or an existing Wine prefix if needed. Quote argument values that contain spaces.
 4. Save the entry, then launch it from your library.
 
 ## Using Proton from Steam
