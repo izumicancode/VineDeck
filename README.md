@@ -224,6 +224,7 @@ builds are settled.
 
 ## Troubleshooting
 
+- **A Proton build is missing** – install it through Steam or place a custom build in `compatibilitytools.d`, then choose **Settings → Wine → Runner → Rescan**.
 - **“Wine is not available” banner** – install `wine`, or set the binary under *Settings → Wine* and press *Detect Wine*.
 - **“The selected Wine prefix does not exist”** – prefixes must exist before use. Create one with `WINEPREFIX=~/Games/MyGame wineboot`.
 - **Application closes immediately (“Failed”)** – open *View Details* in the dialog or read `~/.local/share/vinedeck/logs/launch-<id>.log` for Wine’s output.
