@@ -31,7 +31,7 @@ _(Rendered headlessly with generated sample covers.)_
 - **Steam Proton support**: Proton builds are detected automatically and can be switched with System Wine from the top bar or *Settings → Wine* (see below)
 - Friendly error dialogs, rotating logs, keyboard shortcuts, tooltips and accessible names
 
-Not in this release (by design): Bottles, Lutris, Heroic, online metadata. The code is structured so these can be added later (see *Architecture*).
+Not currently supported: managing Bottles, Lutris, or Heroic installations, and fetching online metadata. See *Architecture* for the extension points.
 
 ## Quick start
 
