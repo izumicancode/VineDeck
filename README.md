@@ -139,6 +139,17 @@ and the license files (`LICENSE`, `NOTICE`). Afterwards VineDeck appears in your
 3. Test in a clean chroot with `extra-x86_64-build` (from `devtools`), then run `makepkg --printsrcinfo > .SRCINFO` and
    push the `PKGBUILD` and `.SRCINFO` to your AUR repository.
 
+### Install a released AppImage
+
+Download the latest `VineDeck-<version>-x86_64.AppImage` from the [GitHub Releases](https://github.com/izumicancode/VineDeck/releases/latest) page, then run:
+
+```bash
+chmod +x VineDeck-*.AppImage
+./VineDeck-*.AppImage
+```
+
+If FUSE is unavailable, launch it with `--appimage-extract-and-run` instead.
+
 ### Build an AppImage (any x86_64 Linux distro)
 
 An AppImage is a single file that bundles Python, Qt (PySide6) and Pillow, so users need to install nothing except Wine
