@@ -106,6 +106,8 @@ Useful environment variables: `XDG_CONFIG_HOME`, `XDG_DATA_HOME`, `XDG_CACHE_HOM
 | Database, artwork, logs | `~/.local/share/vinedeck/` (`library.db`, `artwork/`, `logs/`) |
 | Thumbnails and theme cache (safe to delete) | `~/.cache/vinedeck/` |
 
+For a portable library backup, export it as JSON and include artwork. For a full profile backup, close VineDeck first, then copy both the configuration and data directories; the cache can be recreated.
+
 ### Architecture
 
 ```
