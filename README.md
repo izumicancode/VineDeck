@@ -47,6 +47,7 @@ VineDeck looks for Proton in every place Steam keeps it, so there is nothing to 
 
 Install an official Proton version from Steam's **Library → Tools**. VineDeck discovers installed builds; it does not download or update Proton for you.
 Proton Experimental receives frequent changes; if you prefer fewer surprises, select a regular Proton release instead.
+Update official builds in Steam; tools such as [ProtonUp-Qt](https://github.com/DavidoTek/ProtonUp-Qt) can manage GE-Proton and other custom builds.
 
 | Location | What it finds |
 |----------|---------------|
