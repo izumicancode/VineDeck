@@ -23,6 +23,7 @@ _(Rendered headlessly with generated sample covers.)_
 ## Features
 
 - Add a `.exe` (or `.lnk`) with its own **Wine prefix**, working directory, launch arguments and environment variables
+- A Wine prefix contains a Windows-style drive and registry; using a separate prefix per application keeps their environments independent
 - Grid, compact grid, list and large-cover views; sorting; drag-and-drop custom order
 - Fully adjustable card grid (columns, size, gaps, radius, what is shown) that applies instantly
 - Cover images (PNG/JPG/WEBP) stored in VineDeck’s own data folder, with cached thumbnails; icons extracted from executables when possible
