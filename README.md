@@ -8,7 +8,7 @@ A modern, customisable library and launcher for Windows applications and games t
 ![Application details in VineDeck](docs/details.png)
 ![VineDeck library in list view](docs/list-view.png)
 
-_(Rendered headlessly with generated sample covers.)_
+_Screenshots use generated sample cover art._
 
 ## Requirements
 
