@@ -111,12 +111,6 @@ src/vinedeck/
 Launching is split in two: `core/launcher.py` validates an application and builds an **argument array** and environment (no shell, `shlex` for user arguments); `core/runners.py` discovers Steam/Proton installs and `core/wine_manager.py` validates the selected runner; `core/process_manager.py` starts it with `subprocess.Popen(..., shell=False, start_new_session=True)` and watches it from a worker thread. Proton uses the same function with the `runner=` argument. To support another runner later (Bottles…), extend `build_launch_spec` the same way. External metadata sources plug in via `MetadataProvider` / `MetadataService`.
 
 
-## Notes
-
-Proton will not work or be detected till you install steam then proton.
-Proton Experimental is Recommended 
-If per-chance upadate comes for proton it has to be done through steam
-
 ## Packaging
 
 VineDeck is a normal Python package that ships a `vinedeck` command, a desktop entry and an icon, so it installs as a
