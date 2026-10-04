@@ -5,9 +5,9 @@ A modern, customisable library and launcher for Windows applications and games t
 <!-- Screenshots: add images to docs/ and link them here -->
 ## Screenshots
 
-![Library](docs/library.png)
-![Details](docs/details.png)
-![List view](docs/list-view.png)
+![VineDeck library in grid view](docs/library.png)
+![Application details in VineDeck](docs/details.png)
+![VineDeck library in list view](docs/list-view.png)
 
 _(Rendered headlessly with generated sample covers.)_
 
