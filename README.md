@@ -60,7 +60,7 @@ How Proton is launched: VineDeck runs `proton run <exe>` with `STEAM_COMPAT_DATA
 ## Installation (Arch Linux)
 
 ```bash
-sudo pacman -S wine            # if you do not have it yet
+sudo pacman -S wine            # Required
 git clone <this repo> vinedeck && cd vinedeck/packaging
 makepkg -si
 ```
