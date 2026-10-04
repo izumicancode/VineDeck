@@ -106,7 +106,7 @@ Launching is split in two: `core/launcher.py` validates an application and build
 
 Proton will not work or be detected till you install steam then proton.
 Proton Experimental is Recommended 
-
+If per-chance upadate comes for proton it has to be done through steam
 
 ## Packaging
 
