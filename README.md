@@ -114,6 +114,8 @@ Run `python -m vinedeck --debug` to enable debug logging.
 | Database, artwork, logs | `~/.local/share/vinedeck/` (`library.db`, `artwork/`, `logs/`) |
 | Thumbnails and theme cache (safe to delete) | `~/.cache/vinedeck/` |
 
+These are the default locations; VineDeck respects the corresponding XDG environment variables when they are set.
+
 For a portable library backup, export it as JSON and include artwork. For a full profile backup, close VineDeck first, then copy both the configuration and data directories; the cache can be recreated.
 
 ### Architecture
