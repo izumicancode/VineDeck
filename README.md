@@ -2,7 +2,6 @@
 
 A modern, customisable library and launcher for Windows applications and games that run through **Wine**. VineDeck has a native Arch Linux package recipe and a portable x86_64 AppImage for other Linux distributions. It is built with Python 3, PySide6 (Qt 6), SQLite and Pillow.
 
-<!-- Screenshots: add images to docs/ and link them here -->
 ## Screenshots
 
 ![VineDeck library in grid view](docs/library.png)
