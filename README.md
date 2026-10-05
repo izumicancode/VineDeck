@@ -250,7 +250,7 @@ builds are settled.
 - Keep the version consistent across `pyproject.toml`, `src/vinedeck/__init__.py` and `packaging/PKGBUILD`.
 - Run `pytest -q` (tests use headless Qt; Wine and Proton are never launched).
 - Refresh the screenshots in `docs/` if the UI changed (for example the runner switcher in the top bar).
-- Test the install on a clean system or chroot: the menu entry appears, the icon shows, and the app starts from the launcher.
+- Test on a clean system or chroot that the menu entry and icon appear and VineDeck starts from the desktop launcher.
 - Rebuild the AppImage (`packaging/appimage/build-appimage.sh`) and start it once on a real desktop session.
 
 ## Troubleshooting
