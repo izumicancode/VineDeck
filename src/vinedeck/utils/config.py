@@ -15,7 +15,7 @@ log = get_logger("config")
 DEFAULTS: dict[str, Any] = {
     # appearance
     "theme": "dark",                  # dark | light | system
-    "accent": "#3ecf8e",
+    "accent": "#8b5cf6",
     "background_mode": "default",     # default | custom
     "background_image": "",
     "card_style": "rounded",          # rounded | square
