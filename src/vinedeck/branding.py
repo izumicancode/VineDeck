@@ -10,7 +10,7 @@ from . import __version__
 APP_NAME = "VineDeck"                 # display name
 APP_SLUG = "vinedeck"                 # directory names, logger name, executable
 APP_DESKTOP_ID = "vinedeck"           # .desktop file / Wayland app-id
-APP_TAGLINE = "A beautiful home for your Windows applications and games."
+APP_TAGLINE = "A polished home for your Windows games and apps."
 APP_VERSION = __version__
 APP_LICENSE = "Apache-2.0"
 APP_AUTHOR = "izumicancode"
@@ -18,21 +18,21 @@ APP_AUTHOR_URL = "https://github.com/izumicancode"
 APP_COPYRIGHT = f"Copyright 2026 {APP_AUTHOR}"
 
 # About-page profile (shown in Settings -> About)
-APP_AUTHOR_NAME = "Izumi"
-APP_AUTHOR_ROLE = "Full-Stack Developer  ·  React & Node.js  ·  Webflow  ·  AI"
+APP_AUTHOR_NAME = "Izumi Husayn"
+APP_AUTHOR_ROLE = "Product Designer  ·  Full-Stack Engineer  ·  AI Builder"
 APP_AUTHOR_BIO = (
-    "Code first, design second. I like building clean interfaces, scalable systems and smooth "
-    "experiences, from React and Node.js on the web to Python tools like this one. VineDeck is my "
-    "take on giving your Windows apps and games on Linux a home that is actually nice to look at."
+    "I care about the little details that make software feel effortless. VineDeck is my take on "
+    "turning your Windows games and apps on Linux into a clean, beautiful, and surprisingly joyful "
+    "experience."
 )
-APP_AUTHOR_PASSIONS = ("Clean UI", "Scalable Systems", "Smooth UX")
+APP_AUTHOR_PASSIONS = ("Elegant UI", "Smooth UX", "Thoughtful Systems")
 APP_AUTHOR_PROJECTS = (          # (name, url, one-line description)
     ("Secure-Line", "https://github.com/izumicancode/Secure-Line",
-     "End-to-end-encrypted, mesh-relayed chat for your LAN  ·  Python"),
+     "End-to-end encrypted local chat  ·  Python"),
     ("Manga-Reader", "https://github.com/izumicancode/Maga-Reader",
-     "Polished Manga-reader" "clean UI  ·  Shadcn, TypeScript, tailwindcss"),
+     "A refined reading experience  ·  TypeScript, Tailwind"),
     ("ascii-studio", "https://github.com/izumicancode/ascii-studio",
-     "Text-art, ascii-art ·  Next.js, TypeScript, tailwindcss"),
+     "Generative text-art playground  ·  Next.js, TypeScript"),
 )
 APP_AUTHOR_LINKS = (             # (label, url)
     ("GitHub", APP_AUTHOR_URL),
