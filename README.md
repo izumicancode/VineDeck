@@ -219,7 +219,7 @@ chmod +x dist/VineDeck-*.AppImage
 ./dist/VineDeck-*.AppImage --appimage-extract-and-run     # if FUSE is not available
 ```
 
-Running an AppImage needs FUSE 2 on the host (`sudo pacman -S fuse2`), or use `--appimage-extract-and-run` as above.
+Running an AppImage requires FUSE 2 on the host (`sudo pacman -S fuse2`); alternatively, use `--appimage-extract-and-run`.
 To get a menu entry, use a tool such as [Gear Lever](https://github.com/pkgforge-dev/Gear-Lever) or
 [AppImageLauncher](https://github.com/TheAssassin/AppImageLauncher).
 
