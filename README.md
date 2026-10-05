@@ -14,7 +14,7 @@ _Screenshots show the application UI with generated sample cover art._
 
 - VineDeck runs on Linux. The package recipe targets Arch Linux, while the AppImage targets x86_64 Linux.
 - Wine is needed to launch Windows applications; install it using your distribution's package manager ([WineHQ](https://www.winehq.org/) has platform-specific guidance). For Steam Proton, install [Steam](https://store.steampowered.com/about/) and a Proton build.
-- Running from source requires Python 3.11 or newer. The AppImage bundles Python and the Python libraries used by VineDeck.
+- Running from source requires Python 3.11 or newer. The AppImage bundles Python and VineDeck's Python libraries.
 
 ## Features
 
