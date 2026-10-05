@@ -56,7 +56,7 @@ Update official builds through Steam. Tools such as [ProtonUp-Qt](https://github
 | `/usr/share/steam/compatibilitytools.d/` | System-wide builds such as the AUR `proton-ge-custom` package |
 | Extra library folders in `libraryfolders.vdf` | Builds installed in another Steam library |
 
-Native, Flatpak and Snap Steam installs are all checked. If at least one Proton build is found, a **runner switcher**
+VineDeck checks native, Flatpak and Snap Steam installs. When it finds a Proton build, a **runner switcher**
 appears in the top bar; the same list is in *Settings → Wine → Runner* (with a **Rescan** button). The choice applies to every
 application and is remembered. Switch back to *System Wine* at any time.
 
