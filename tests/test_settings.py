@@ -69,6 +69,7 @@ def test_blank_xdg_values_fall_back_to_defaults(tmp_path):
     assert p.config_dir == Path.home() / ".config" / "vinedeck"
     assert p.data_dir == Path.home() / ".local/share" / "vinedeck"
     assert p.cache_dir == Path.home() / ".cache" / "vinedeck"
+    assert not p.has_custom_xdg()
 
 
 def test_license_and_credit():
