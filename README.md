@@ -95,6 +95,8 @@ pip install -e ".[dev]"
 python -m vinedeck          # or: vinedeck
 python -m vinedeck --version
 pytest                      # runs headless (offscreen Qt); Wine is never launched in tests
+python -m vinedeck --help
+python -m vinedeck --version
 ```
 
 If you have installed the dependencies but not the editable package, start from the repository root with `PYTHONPATH=src python -m vinedeck`.
