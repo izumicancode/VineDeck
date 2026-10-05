@@ -88,26 +88,23 @@ The PKGBUILD installs the Python package, a `vinedeck` command, the `.desktop` e
 
 ## Development
 
-```bash
-python -m venv .venv
-source .venv/bin/activate
-pip install -e ".[dev]"
-python -m vinedeck          # or: vinedeck
-python -m vinedeck --version
-pytest                      # runs headless (offscreen Qt); Wine is never launched in tests
-python -m vinedeck --help
-python -m vinedeck --version
-```
-
-If you have installed the dependencies but not the editable package, start from the repository root with `PYTHONPATH=src python -m vinedeck`.
-
-For a clean local setup, keep the project dependencies isolated from the system Python and rebuild the editable install after changes:
+From the repository root, always run VineDeck from the project virtual environment so `python -m vinedeck` can import the package correctly:
 
 ```bash
 python -m venv .venv
 source .venv/bin/activate
 python -m pip install --upgrade pip
 pip install -e ".[dev]"
+python -m vinedeck          # or: vinedeck
+python -m vinedeck --version
+python -m vinedeck --help
+pytest -q                   # runs headless (offscreen Qt); Wine is never launched in tests
+```
+
+If you are not using the project venv, `python -m vinedeck` can fail with `No module named vinedeck`. In that case, either activate `.venv` first or run the app directly from the source tree:
+
+```bash
+PYTHONPATH=src python -m vinedeck
 ```
 
 To run with an isolated, throw-away profile, point the XDG directories at a temporary location:
