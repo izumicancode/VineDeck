@@ -38,7 +38,7 @@ Install VineDeck using one of the options in the *Installation* or *Packaging* s
 
 1. Install Wine, or install Steam and a Proton build if you want to use Proton.
 2. Launch VineDeck and choose **Add Your First Application** (or **+ Add Application** when the library is not empty).
-3. Select the Windows `.exe` or `.lnk` file. Set a working directory, launch arguments, environment variables, or an existing Wine prefix if needed. Quote argument values that contain spaces.
+3. Select the Windows `.exe` or `.lnk` file. Set a working directory, launch arguments, environment variables, or an existing Wine prefix if needed. Enter arguments as a command-line string; quote values that contain spaces. VineDeck parses the string into arguments and does not invoke a shell.
 4. Save the entry, then launch it from your library.
 
 ## Using Proton from Steam
