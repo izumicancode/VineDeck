@@ -156,9 +156,8 @@ Launching is split in two: `core/launcher.py` validates an application and build
 
 ## Packaging
 
-VineDeck is a normal Python package that ships a `vinedeck` command, a desktop entry and an icon, so it installs as a
-regular desktop app. `packaging/PKGBUILD`, `packaging/vinedeck.desktop` and `src/vinedeck/resources/icons/vinedeck.svg`
-are everything a package needs. Wheel build: `python -m build`.
+VineDeck is a Python package with a `vinedeck` command, desktop entry and icon. The package uses `packaging/PKGBUILD`,
+`packaging/vinedeck.desktop` and `src/vinedeck/resources/icons/vinedeck.svg`. Build a wheel with `python -m build`.
 
 ### Build and install as a desktop app (Arch Linux)
 
