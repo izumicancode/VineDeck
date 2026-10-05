@@ -1,4 +1,5 @@
 import json
+from pathlib import Path
 
 from vinedeck.utils.config import DEFAULTS, Settings
 from vinedeck.utils.paths import AppPaths
