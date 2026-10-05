@@ -30,7 +30,7 @@ _Screenshots show the application UI with generated sample cover art._
 - **Steam Proton support**: detected builds can be selected instead of System Wine from the top bar or *Settings → Wine* (see below)
 - Friendly error dialogs, rotating logs, keyboard shortcuts, tooltips and accessible names
 
-Not currently supported: managing Bottles, Lutris, or Heroic installations, and fetching online metadata. See *Architecture* for the extension points.
+VineDeck does not currently manage Bottles, Lutris or Heroic installations, or fetch online metadata. See *Architecture* for extension points.
 
 ## Quick start
 
