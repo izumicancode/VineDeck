@@ -204,7 +204,7 @@ packaging/appimage/build-appimage.sh
 # -> dist/VineDeck-<version>-x86_64.AppImage   (about 85 MB)
 ```
 
-The build machine needs `bash`, `curl`, and `python3` with `pip` and `setuptools`/`wheel` (`sudo pacman -S python-pip
+The build machine needs `bash`, `curl` and `python3` with `pip`, `setuptools` and `wheel` (`sudo pacman -S python-pip
 python-setuptools python-wheel`). The script downloads a portable Python (from
 [python-appimage](https://github.com/niess/python-appimage)) and `appimagetool` once and caches them in
 `~/.cache/vinedeck-build`. It then installs VineDeck into that Python, trims files that are not needed at runtime, runs a smoke
