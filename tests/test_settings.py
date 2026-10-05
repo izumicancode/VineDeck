@@ -94,3 +94,14 @@ def test_help_flag_prints_usage(capsys):
     assert "Usage:" in out
     assert "--version" in out
     assert "--help" in out
+
+
+def test_validate_key_rejects_unknown_setting_names():
+    from vinedeck.utils.config import validate_key
+    assert validate_key("theme") == "theme"
+    try:
+        validate_key("not_a_real_key")
+    except KeyError:
+        pass
+    else:
+        raise AssertionError("Unknown setting key should raise KeyError")

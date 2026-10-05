@@ -94,6 +94,13 @@ def sanitize(key: str, value: Any) -> Any:
     return value
 
 
+def validate_key(key: str) -> str:
+    """Return a known config key or raise `KeyError` for unsupported names."""
+    if key not in DEFAULTS:
+        raise KeyError(key)
+    return key
+
+
 class Settings:
     def __init__(self, path: Path | None = None):
         self._path = path
@@ -146,8 +153,7 @@ class Settings:
         return self._values[key]
 
     def set(self, key: str, value: Any, *, save: bool = True) -> None:
-        if key not in DEFAULTS:
-            raise KeyError(key)
+        key = validate_key(key)
         value = sanitize(key, value)
         if self._values[key] == value:
             return
