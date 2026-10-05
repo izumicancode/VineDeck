@@ -99,6 +99,15 @@ pytest                      # runs headless (offscreen Qt); Wine is never launch
 
 If you have installed the dependencies but not the editable package, start from the repository root with `PYTHONPATH=src python -m vinedeck`.
 
+For a clean local setup, keep the project dependencies isolated from the system Python and rebuild the editable install after changes:
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+pip install -e ".[dev]"
+```
+
 To run with an isolated, throw-away profile, point the XDG directories at a temporary location:
 
 ```bash
