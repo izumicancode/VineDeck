@@ -82,6 +82,9 @@ class AppPaths:
     def runtime_dir(self) -> Path:
         return self.data_dir / "runtime"
 
+    def __iter__(self):
+        return iter((self.config_dir, self.data_dir, self.cache_dir))
+
     def has_custom_xdg(self) -> bool:
         return any(os.environ.get(var) for var in ("XDG_CONFIG_HOME", "XDG_DATA_HOME", "XDG_CACHE_HOME"))
 
