@@ -131,7 +131,7 @@ python -m vinedeck --debug
 |------|----------|
 | Preferences | `~/.config/vinedeck/config.json` (or `$XDG_CONFIG_HOME/vinedeck/config.json`) |
 | Database, artwork, logs | `~/.local/share/vinedeck/` (`library.db`, `artwork/`, `logs/`; or `$XDG_DATA_HOME/vinedeck/`) |
-| Thumbnails and theme cache (safe to delete) | `~/.cache/vinedeck/` |
+| Thumbnails and theme cache (safe to delete) | `~/.cache/vinedeck/` (or `$XDG_CACHE_HOME/vinedeck/`) |
 
 These are the default locations; VineDeck respects the corresponding XDG environment variables when they are set.
 
