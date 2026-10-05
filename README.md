@@ -1,6 +1,13 @@
 # VineDeck
 
-VineDeck is a modern launcher for Windows games and apps on Linux. It keeps your Wine and Proton setups organized, gives each app its own launch settings, and presents everything in a clean, polished library.
+A polished launcher for Windows games and apps on Linux. VineDeck keeps your Wine and Proton setup organized, gives each app its own launch settings, and presents everything in a clean, elegant library.
+
+## Why VineDeck
+
+- Keep every Windows title in one tidy library
+- Launch apps with custom prefixes, args, env vars, and working directories
+- Switch instantly between Wine and Proton without leaving the app
+- Fine-tune the UI with dark/light/system themes, accents, cards, and backgrounds
 
 ## Features
 
@@ -27,7 +34,7 @@ python -m vinedeck
 - Wine, or Steam + Proton
 - Python 3.11+
 
-## Installation
+## Development
 
 ### Local development
 
@@ -37,15 +44,15 @@ python -m vinedeck --help
 pytest -q
 ```
 
-If you are not using the project venv, `python -m vinedeck` can fail with `No module named vinedeck`. Activate `.venv` first or use:
+If you are not using the project venv, `python -m vinedeck` can fail with `No module named vinedeck`. Activate `.venv` first or run:
 
 ```bash
 PYTHONPATH=src python -m vinedeck
 ```
 
-### Arch package / app image
+### Packaging
 
-VineDeck ships with an Arch PKGBUILD and an x86_64 AppImage. See the packaging section in the project docs for build and install steps.
+VineDeck ships with an Arch PKGBUILD and an x86_64 AppImage. Use the packaging scripts in the repository for install and build steps.
 
 ## Data locations
 
