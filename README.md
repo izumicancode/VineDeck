@@ -254,6 +254,8 @@ builds are settled.
 ## Troubleshooting
 
 - **Launching is disabled** – VineDeck does not launch applications when run as root. Start it from your regular desktop account.
+- **`--help` does not show a list of options** – run `python -m vinedeck --help` or `vinedeck --help`; the CLI exits with usage text before Qt starts.
+- **XDG overrides look ignored** – empty or relative values are discarded; set absolute paths such as `/tmp/vinedeck-test/config` and re-run the app.
 - **A Proton build is missing** – install it through Steam or place a custom build in `compatibilitytools.d`, then choose **Settings → Wine → Runner → Rescan**.
 - **“Wine is not available” banner** – install `wine`, or set the binary under *Settings → Wine* and press *Detect Wine*.
 - **“The selected Wine prefix does not exist”** – prefixes must exist before use. Create one with `WINEPREFIX=~/Games/MyGame wineboot`.
