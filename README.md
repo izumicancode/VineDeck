@@ -88,7 +88,7 @@ The PKGBUILD installs the Python package, `vinedeck` command, desktop entry and 
 
 ## Development
 
-From the repository root, always run VineDeck from the project virtual environment so `python -m vinedeck` can import the package correctly:
+From the repository root, use the project virtual environment so `python -m vinedeck` can import VineDeck:
 
 ```bash
 python -m venv .venv
