@@ -185,3 +185,6 @@ class Settings:
 
     def copy(self) -> dict[str, Any]:
         return dict(self._values)
+
+    def as_dict(self) -> dict[str, Any]:
+        return self.copy()
