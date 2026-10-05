@@ -154,7 +154,7 @@ src/vinedeck/
   utils/      XDG paths, JSON settings, logging, platform helpers
 ```
 
-Launching is split in two: `core/launcher.py` validates an application and builds an **argument array** and environment (no shell, `shlex` for user arguments); `core/runners.py` discovers Steam/Proton installs and `core/wine_manager.py` validates the selected runner; `core/process_manager.py` starts it with `subprocess.Popen(..., shell=False, start_new_session=True)` and watches it from a worker thread. Proton uses the same function with the `runner=` argument. To support another runner later (Bottles…), extend `build_launch_spec` the same way. External metadata sources plug in via `MetadataProvider` / `MetadataService`.
+Launching is split in two: `core/launcher.py` validates an application and builds an **argument array** and environment (no shell, `shlex` for user arguments); `core/runners.py` discovers Steam/Proton installs and `core/wine_manager.py` validates the selected runner; `core/process_manager.py` starts it with `subprocess.Popen(..., shell=False, start_new_session=True)` and watches it from a worker thread. Proton uses the same function with the `runner=` argument. To support another runner later (Bottles…), extend `build_launch_spec` the same way. External metadata sources plug in via `MetadataProvider` / `MetadataService`. The small utility layer in `utils/` is intentionally testable so config, logging and path behavior remain predictable across different desktop setups.
 
 
 ## Packaging
