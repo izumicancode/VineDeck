@@ -57,7 +57,7 @@ Update official builds through Steam. Tools such as [ProtonUp-Qt](https://github
 | Extra library folders in `libraryfolders.vdf` | Builds installed in another Steam library |
 
 VineDeck checks native, Flatpak and Snap Steam installs. When it finds a Proton build, a **runner switcher**
-appears in the top bar; the same list is in *Settings → Wine → Runner* (with a **Rescan** button). The choice applies to every
+appears in the top bar. The same choices are available in *Settings → Wine → Runner*, along with a **Rescan** button. The
 application and is remembered. Switch back to *System Wine* at any time.
 
 How Proton is launched: VineDeck runs `proton run <exe>` with `STEAM_COMPAT_DATA_PATH` and
