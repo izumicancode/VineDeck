@@ -84,7 +84,7 @@ makepkg -si
 
 Before the first `makepkg` run, install the build and runtime dependencies listed under *Packaging*.
 
-The PKGBUILD installs the Python package, a `vinedeck` command, the `.desktop` entry and the icon. It builds from the surrounding source tree; for the AUR switch it to a release tarball (instructions are in the file).
+The PKGBUILD installs the Python package, `vinedeck` command, desktop entry and icon. It builds from the surrounding source tree; for the AUR, change it to use a release tarball as described in the file.
 
 ## Development
 
