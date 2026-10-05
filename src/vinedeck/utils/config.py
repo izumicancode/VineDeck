@@ -157,6 +157,12 @@ class Settings:
         for cb in list(self._listeners):
             cb(key, value)
 
+    def keys(self) -> list[str]:
+        return list(self._values)
+
+    def items(self) -> list[tuple[str, Any]]:
+        return list(self._values.items())
+
     def update(self, values: dict[str, Any], *, save: bool = True) -> None:
         for key, value in values.items():
             self.set(key, value, save=False)

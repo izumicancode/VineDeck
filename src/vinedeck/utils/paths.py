@@ -78,9 +78,13 @@ class AppPaths:
     def theme_cache_dir(self) -> Path:
         return self.cache_dir / "theme"
 
+    @property
+    def runtime_dir(self) -> Path:
+        return self.data_dir / "runtime"
+
     def ensure(self) -> "AppPaths":
         for d in (self.config_dir, self.data_dir, self.cache_dir, self.logs_dir,
                   self.covers_dir, self.icons_dir, self.backgrounds_dir, self.proton_dir,
-                  self.thumbs_dir, self.theme_cache_dir):
+                  self.runtime_dir, self.thumbs_dir, self.theme_cache_dir):
             d.mkdir(parents=True, exist_ok=True)
         return self
