@@ -101,7 +101,7 @@ python -m vinedeck --help
 pytest -q                   # runs headless (offscreen Qt); Wine is never launched in tests
 ```
 
-If you are not using the project venv, `python -m vinedeck` can fail with `No module named vinedeck`. In that case, either activate `.venv` first or run the app directly from the source tree:
+Without the project environment, `python -m vinedeck` may fail with `No module named vinedeck`. Activate `.venv` or run directly from the source tree:
 
 ```bash
 PYTHONPATH=src python -m vinedeck
