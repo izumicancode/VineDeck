@@ -34,7 +34,7 @@ VineDeck does not currently manage Bottles, Lutris or Heroic installations, or f
 
 ## Quick start
 
-Install VineDeck using one of the options in the *Installation* or *Packaging* sections, then:
+Install VineDeck using an option in *Installation* or *Packaging*, then follow these steps:
 
 1. Install Wine, or install Steam and a Proton build if you want to use Proton.
 2. Launch VineDeck and choose **Add Your First Application** (or **+ Add Application** when the library is not empty).
