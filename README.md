@@ -107,7 +107,7 @@ Without the project environment, `python -m vinedeck` may fail with `No module n
 PYTHONPATH=src python -m vinedeck
 ```
 
-To run with an isolated, throw-away profile, point the XDG directories at a temporary location:
+To test with a disposable profile, point the XDG directories at a temporary location:
 
 ```bash
 XDG_CONFIG_HOME=/tmp/vinedeck-test/config \
