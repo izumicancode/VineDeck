@@ -280,7 +280,7 @@ builds are settled.
 
 ## Contributing
 
-[Issues](https://github.com/izumicancode/VineDeck/issues) and [pull requests](https://github.com/izumicancode/VineDeck/pulls) are welcome. Please run `pytest` before submitting, keep UI code free of business logic (put it in `core/` or `services/` with tests), and never launch real Wine from tests – mock `subprocess`.
+[Issues](https://github.com/izumicancode/VineDeck/issues) and [pull requests](https://github.com/izumicancode/VineDeck/pulls) are welcome. Please run `pytest -q` before submitting, check both the normal app entry path and the `--help`/`--version` flags, keep UI code free of business logic (put it in `core/` or `services/` with tests), and never launch real Wine from tests – mock `subprocess`.
 
 ## License
 
