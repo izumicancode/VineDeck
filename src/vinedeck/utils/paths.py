@@ -23,6 +23,8 @@ def _xdg(env: Mapping[str, str], var: str, fallback: str) -> Path:
 
 @dataclass(frozen=True)
 class AppPaths:
+    """Resolve the standard VineDeck configuration, data, and cache directories."""
+
     config_dir: Path
     data_dir: Path
     cache_dir: Path
