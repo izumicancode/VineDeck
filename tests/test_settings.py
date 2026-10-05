@@ -38,6 +38,8 @@ def test_settings_batch_update_and_defaults(tmp_path):
     assert s.copy()["theme"] == "light"
     assert "theme" in s.keys()
     assert s.items()[0][0] in s
+    assert len(s) == len(DEFAULTS)
+    assert "theme" in [k for k in s]
 
 
 def test_corrupt_file_uses_defaults(tmp_path):

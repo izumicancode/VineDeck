@@ -149,6 +149,12 @@ class Settings:
     def __contains__(self, key: str) -> bool:
         return key in self._values
 
+    def __len__(self) -> int:
+        return len(self._values)
+
+    def __iter__(self):
+        return iter(self._values)
+
     def __getitem__(self, key: str) -> Any:
         return self._values[key]
 
