@@ -20,6 +20,10 @@ def main(argv: list[str] | None = None) -> int:
     if "--version" in argv[1:]:                       # handled before Qt starts, so it works without a display
         print(f"{APP_NAME} {APP_VERSION}")
         return 0
+    if "--help" in argv[1:] or "-h" in argv[1:]:
+        print(f"Usage: {APP_NAME} [--version] [--debug] [--help]")
+        print("Run VineDeck as a desktop app. Use --version to print the release number.")
+        return 0
     paths = AppPaths.from_env()
     paths.ensure()
     setup_logging(paths.logs_dir, debug="--debug" in argv)

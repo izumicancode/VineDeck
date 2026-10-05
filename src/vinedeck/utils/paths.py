@@ -12,6 +12,9 @@ from ..branding import APP_SLUG
 
 def _xdg(env: Mapping[str, str], var: str, fallback: str) -> Path:
     value = env.get(var, "")
+    if value is None:
+        value = ""
+    value = str(value).strip()
     # The XDG spec says relative paths must be ignored.
     if value and os.path.isabs(value):
         return Path(value)
@@ -75,8 +78,9 @@ class AppPaths:
     def theme_cache_dir(self) -> Path:
         return self.cache_dir / "theme"
 
-    def ensure(self) -> None:
+    def ensure(self) -> "AppPaths":
         for d in (self.config_dir, self.data_dir, self.cache_dir, self.logs_dir,
                   self.covers_dir, self.icons_dir, self.backgrounds_dir, self.proton_dir,
                   self.thumbs_dir, self.theme_cache_dir):
             d.mkdir(parents=True, exist_ok=True)
+        return self

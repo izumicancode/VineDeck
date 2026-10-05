@@ -82,6 +82,7 @@ def sanitize(key: str, value: Any) -> Any:
         elif isinstance(default, str):
             if not isinstance(value, str):
                 raise TypeError
+            value = value.strip()
         if key in CHOICES and value not in CHOICES[key]:
             raise ValueError
         if key == "accent" and not (len(value) == 7 and value.startswith("#")):
@@ -100,6 +101,10 @@ class Settings:
         self._listeners: list[Callable[[str, Any], None]] = []
         if path is not None:
             self.load()
+
+    @classmethod
+    def from_file(cls, path: Path | str) -> "Settings":
+        return cls(Path(path))
 
     def load(self) -> None:
         if self._path is None or not self._path.exists():
@@ -131,8 +136,11 @@ class Settings:
             except OSError:
                 pass
 
-    def get(self, key: str) -> Any:
-        return self._values[key]
+    def get(self, key: str, default: Any = None) -> Any:
+        return self._values.get(key, default)
+
+    def __contains__(self, key: str) -> bool:
+        return key in self._values
 
     def __getitem__(self, key: str) -> Any:
         return self._values[key]
@@ -149,6 +157,12 @@ class Settings:
         for cb in list(self._listeners):
             cb(key, value)
 
+    def update(self, values: dict[str, Any], *, save: bool = True) -> None:
+        for key, value in values.items():
+            self.set(key, value, save=False)
+        if save:
+            self.save()
+
     def subscribe(self, callback: Callable[[str, Any], None]) -> None:
         self._listeners.append(callback)
 
@@ -156,3 +170,6 @@ class Settings:
         for key in keys or list(DEFAULTS):
             self.set(key, DEFAULTS[key], save=False)
         self.save()
+
+    def copy(self) -> dict[str, Any]:
+        return dict(self._values)
