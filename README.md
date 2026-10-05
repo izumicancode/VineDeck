@@ -60,7 +60,7 @@ VineDeck checks native, Flatpak and Snap Steam installs. When it finds a Proton 
 appears in the top bar. The same choices are available in *Settings → Wine → Runner*, along with a **Rescan** button. The
 selected runner applies to every application and is remembered; choose *System Wine* to switch back.
 
-How Proton is launched: VineDeck runs `proton run <exe>` with `STEAM_COMPAT_DATA_PATH` and
+VineDeck launches Proton with `proton run <exe>` and sets `STEAM_COMPAT_DATA_PATH` and
 `STEAM_COMPAT_CLIENT_INSTALL_PATH` set, which is what Steam does.
 
 * **Prefixes.** Proton keeps its prefix in `<compatdata>/pfx`. An application *without* a prefix gets its own, created in
