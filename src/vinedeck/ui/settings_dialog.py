@@ -26,7 +26,7 @@ from ..utils.platform import session_type
 from .dialogs.error_dialog import show_error
 from .widgets import IMAGE_FILTER, PathField, label, make_button
 
-SECTIONS = ["General", "Appearance", "Library", "Wine", "Advanced", "About"]
+SECTIONS = ["General", "Customization", "Appearance", "Library", "Wine", "Advanced", "About"]
 RATIOS = {"Poster (2:3)": 1.5, "Box art (3:4)": 4 / 3, "Square (1:1)": 1.0, "Wide (16:9)": 9 / 16}
 INFO_H = 56
 
@@ -80,7 +80,8 @@ class SettingsDialog(QDialog):
         root.addWidget(self.nav)
         self.stack = QStackedWidget()
         root.addWidget(self.stack, 1)
-        builders = [self._general, self._appearance, self._library, self._wine, self._advanced, self._about]
+        builders = [self._general, self._customization, self._appearance, self._library, self._wine,
+                    self._advanced, self._about]
         for name, build in zip(SECTIONS, builders):
             self.stack.addWidget(self._scrolled(name, build()))
         self.nav.currentRowChanged.connect(self.stack.setCurrentIndex)
@@ -142,6 +143,29 @@ class SettingsDialog(QDialog):
         f.addRow("Window", self._check("Remember window size and position", "restore_geometry"))
         f.addRow("", label("Removing only deletes the library entry and VineDeck’s copy of its artwork. "
                            "Your game files and Wine prefixes are never touched.", muted=True, wrap=True))
+        return w
+
+    def _customization(self) -> QWidget:
+        w = QWidget()
+        lay = QVBoxLayout(w)
+        lay.setContentsMargins(0, 0, 0, 0)
+        lay.setSpacing(18)
+
+        info = label("Everything here updates live, so you can tune the look and layout without leaving the settings window.",
+                     muted=True, wrap=True)
+        lay.addWidget(info)
+
+        look = QGroupBox("Look & feel")
+        look_lay = QVBoxLayout(look)
+        look_lay.setContentsMargins(16, 12, 16, 12)
+        look_lay.addWidget(self._appearance())
+        lay.addWidget(look)
+
+        library = QGroupBox("Library & card layout")
+        library_lay = QVBoxLayout(library)
+        library_lay.setContentsMargins(16, 12, 16, 12)
+        library_lay.addWidget(self._library())
+        lay.addWidget(library)
         return w
 
     def _appearance(self) -> QWidget:
