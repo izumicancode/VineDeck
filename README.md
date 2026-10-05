@@ -61,7 +61,7 @@ appears in the top bar. The same choices are available in *Settings → Wine →
 selected runner applies to every application and is remembered; choose *System Wine* to switch back.
 
 VineDeck launches Proton with `proton run <exe>` and sets `STEAM_COMPAT_DATA_PATH` and
-`STEAM_COMPAT_CLIENT_INSTALL_PATH` set, which is what Steam does.
+`STEAM_COMPAT_CLIENT_INSTALL_PATH`, as Steam does.
 
 * **Prefixes.** Proton stores its prefix in `<compatdata>/pfx`. An application without a prefix gets a dedicated one in
   `~/.local/share/vinedeck/proton/app-<id>`. If an application's prefix is a Steam `compatdata/<appid>` folder (or its `pfx`
