@@ -43,7 +43,7 @@ Install VineDeck using an option in *Installation* or *Packaging*, then follow t
 
 ## Using Proton from Steam
 
-VineDeck looks for Proton in every place Steam keeps it, so there is nothing to configure:
+VineDeck searches Steam's Proton install locations automatically; no path configuration is needed:
 
 Install an official Proton version from Steam's **Library → Tools**. VineDeck discovers installed builds; it does not download or update Proton for you.
 Proton Experimental receives frequent changes; if you prefer fewer surprises, select a regular Proton release instead.
