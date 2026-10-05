@@ -52,7 +52,7 @@ Update official builds through Steam. Tools such as [ProtonUp-Qt](https://github
 | Location | What it finds |
 |----------|---------------|
 | `<steam>/steamapps/common/Proton*` | Official builds installed from Steam's *Library → Tools* |
-| `<steam>/compatibilitytools.d/` | GE-Proton and other custom builds (e.g. from ProtonUp-Qt) |
+| `<steam>/compatibilitytools.d/` | GE-Proton and other custom builds, including ProtonUp-Qt installs |
 | `/usr/share/steam/compatibilitytools.d/` | System-wide installs such as the AUR `proton-ge-custom` |
 | Extra library folders in `libraryfolders.vdf` | Proton installed on another drive |
 
