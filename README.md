@@ -69,7 +69,7 @@ VineDeck launches Proton with `proton run <exe>` and sets `STEAM_COMPAT_DATA_PAT
   `pfx` symlink to it inside its own `proton/linked/` folder and never adds files to your prefix folder.
 * **Heads-up:** Proton upgrades a prefix on first use; it may no longer work with plain Wine afterwards.
   Keep separate prefixes for Wine and Proton, or back up before switching an existing one.
-* Per-application environment variables work as usual (`PROTON_LOG=1`, `PROTON_USE_WINED3D=1`, `DXVK_HUD=…`).
+* Set Proton options with per-application environment variables, such as `PROTON_LOG=1`, `PROTON_USE_WINED3D=1` or `DXVK_HUD=…`.
 * Proton is started directly (outside Steam's container runtime). That works for GE-Proton and normally for Valve's builds; if a
   Valve build refuses to start, try GE-Proton.
 
