@@ -24,7 +24,7 @@ _Screenshots show the application UI with generated sample cover art._
 - Adjustable card grids include column count, size, gaps, corner radius and visible details; changes apply immediately
 - Cover images (PNG/JPG/WEBP) are stored in VineDeck’s data folder with cached thumbnails; executable icons are extracted when possible
 - Categories, favourites, Recently and Most Played views, plus as-you-type search
-- Launch state (Launching… / Running / Closed / Failed) without blocking the UI; games keep running if you close the launcher
+- Launch states (Launching… / Running / Closed / Failed) update without blocking the UI; running games remain open if you close VineDeck
 - Dark / light / system theme, accent colour, optional blurred custom background
 - Export / import your library as JSON (optionally with artwork)
 - **Steam Proton support**: Proton builds are detected automatically and can be switched with System Wine from the top bar or *Settings → Wine* (see below)
