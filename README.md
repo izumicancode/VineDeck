@@ -53,7 +53,7 @@ Update official builds through Steam. Tools such as [ProtonUp-Qt](https://github
 |----------|---------------|
 | `<steam>/steamapps/common/Proton*` | Official builds installed from Steam's *Library → Tools* |
 | `<steam>/compatibilitytools.d/` | GE-Proton and other custom builds, including ProtonUp-Qt installs |
-| `/usr/share/steam/compatibilitytools.d/` | System-wide installs such as the AUR `proton-ge-custom` |
+| `/usr/share/steam/compatibilitytools.d/` | System-wide builds such as the AUR `proton-ge-custom` package |
 | Extra library folders in `libraryfolders.vdf` | Proton installed on another drive |
 
 Native, Flatpak and Snap Steam installs are all checked. If at least one Proton build is found, a **runner switcher**
