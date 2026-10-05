@@ -117,7 +117,14 @@ XDG_CACHE_HOME=/tmp/vinedeck-test/cache \
 python -m vinedeck
 ```
 
-Run `python -m vinedeck --debug` to enable debug logging.
+Run `python -m vinedeck --debug` to enable debug logging. For ad-hoc debugging without touching your regular profile, override the XDG directories in the same shell session before launch:
+
+```bash
+XDG_CONFIG_HOME=/tmp/vinedeck-debug/config \
+XDG_DATA_HOME=/tmp/vinedeck-debug/data \
+XDG_CACHE_HOME=/tmp/vinedeck-debug/cache \
+python -m vinedeck --debug
+```
 
 ### Where things are stored
 
