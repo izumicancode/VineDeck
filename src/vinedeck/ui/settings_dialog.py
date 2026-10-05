@@ -237,12 +237,14 @@ class SettingsDialog(QDialog):
     def _library(self) -> QWidget:
         w, f = self._form()
         view = QComboBox()
+        view.setMaxVisibleItems(10)
         for key, text in (("grid", "Grid"), ("compact", "Compact Grid"), ("list", "List"), ("large", "Large Cover")):
             view.addItem(text, key)
         view.setCurrentIndex(view.findData(self.s["view_mode"]))
         view.activated.connect(lambda i: self.s.set("view_mode", view.itemData(i)))
         f.addRow("Default View", view)
         sort = QComboBox()
+        sort.setMaxVisibleItems(10)
         for key, text in SORT_LABELS.items():
             sort.addItem(text, key)
         sort.setCurrentIndex(sort.findData(self.s["sort_key"]))
@@ -260,6 +262,7 @@ class SettingsDialog(QDialog):
         gf.addRow("Card Width", self.cw)
         gf.addRow("Card Height", self.ch)
         ratio = QComboBox()
+        ratio.setMaxVisibleItems(10)
         ratio.addItem("Choose a cover ratio…", None)
         for text, r in RATIOS.items():
             ratio.addItem(text, r)
@@ -291,6 +294,7 @@ class SettingsDialog(QDialog):
         self.runner_box.setAccessibleName("Runner")
         self.runner_box.setSizeAdjustPolicy(QComboBox.AdjustToMinimumContentsLengthWithIcon)
         self.runner_box.setMinimumContentsLength(28)
+        self.runner_box.setMaxVisibleItems(10)
         rescan = make_button("Rescan", "ghost")
         rescan.setToolTip("Look for Steam and Proton installs again")
         rescan.clicked.connect(self._rescan_runners)

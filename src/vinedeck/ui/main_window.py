@@ -206,6 +206,7 @@ class MainWindow(QMainWindow):
         lay.addSpacing(8)
         self.sort_combo = QComboBox()
         self.sort_combo.setAccessibleName("Sort by")
+        self.sort_combo.setMaxVisibleItems(10)
         for k, t in SORT_LABELS.items():
             self.sort_combo.addItem(t, k)
         self.sort_combo.activated.connect(lambda i: self.s.set("sort_key", self.sort_combo.itemData(i)))
@@ -213,6 +214,7 @@ class MainWindow(QMainWindow):
         self.runner_combo.setAccessibleName("Runner")
         self.runner_combo.setToolTip("Choose how applications are launched: system Wine or a Steam Proton build")
         self.runner_combo.setMaximumWidth(230)
+        self.runner_combo.setMaxVisibleItems(10)
         self.runner_combo.activated.connect(lambda i: self.s.set("runner", self.runner_combo.itemData(i)))
         self.rev_btn = QToolButton()
         self.rev_btn.setCheckable(True)
