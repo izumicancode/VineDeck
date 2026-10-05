@@ -129,7 +129,7 @@ python -m vinedeck --debug
 
 | What | Location |
 |------|----------|
-| Preferences | `~/.config/vinedeck/config.json` |
+| Preferences | `~/.config/vinedeck/config.json` (or `$XDG_CONFIG_HOME/vinedeck/config.json`) |
 | Database, artwork, logs | `~/.local/share/vinedeck/` (`library.db`, `artwork/`, `logs/`) |
 | Thumbnails and theme cache (safe to delete) | `~/.cache/vinedeck/` |
 
