@@ -27,7 +27,7 @@ _Screenshots show the application UI with generated sample cover art._
 - Launch states (Launching… / Running / Closed / Failed) update without blocking the UI; running games remain open if you close VineDeck
 - Dark, light or system theme, with an accent colour and optional blurred custom background
 - Export and import the library as JSON, optionally including artwork
-- **Steam Proton support**: Proton builds are detected automatically and can be switched with System Wine from the top bar or *Settings → Wine* (see below)
+- **Steam Proton support**: detected builds can be selected instead of System Wine from the top bar or *Settings → Wine* (see below)
 - Friendly error dialogs, rotating logs, keyboard shortcuts, tooltips and accessible names
 
 Not currently supported: managing Bottles, Lutris, or Heroic installations, and fetching online metadata. See *Architecture* for the extension points.
