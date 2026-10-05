@@ -138,6 +138,8 @@ python -m vinedeck --debug
 
 These are the default locations; VineDeck respects the corresponding XDG environment variables when they are set.
 
+If you need to reset generated cache data without touching the library contents, delete `~/.cache/vinedeck/` and relaunch the app; thumbnails and theme assets will be rebuilt automatically.
+
 For a portable library backup, export it as JSON and include artwork. For a full profile backup, close VineDeck first, then copy both the configuration and data directories; the cache can be recreated. If you want to test a clean profile without touching your real install, point `XDG_CONFIG_HOME`, `XDG_DATA_HOME` and `XDG_CACHE_HOME` at a temporary directory before launching the app.
 
 ### Architecture
