@@ -63,7 +63,7 @@ selected runner applies to every application and is remembered; choose *System W
 VineDeck launches Proton with `proton run <exe>` and sets `STEAM_COMPAT_DATA_PATH` and
 `STEAM_COMPAT_CLIENT_INSTALL_PATH` set, which is what Steam does.
 
-* **Prefixes.** Proton keeps its prefix in `<compatdata>/pfx`. An application *without* a prefix gets its own, created in
+* **Prefixes.** Proton stores its prefix in `<compatdata>/pfx`. An application without a prefix gets a dedicated one in
   `~/.local/share/vinedeck/proton/app-<id>`. If an application's prefix is a Steam `compatdata/<appid>` folder (or its `pfx`
   folder), it is used directly, so you can reuse a prefix Steam already made. If it is a plain Wine prefix, VineDeck creates a
   `pfx` symlink to it inside its own `proton/linked/` folder and never adds files to your prefix folder.
