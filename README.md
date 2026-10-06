@@ -26,7 +26,7 @@ _Screenshots show the application UI with generated sample cover art._
 - Categories, favourites, Recently and Most Played views, plus as-you-type search
 - Launch states (Launching… / Running / Closed / Failed) update without blocking the UI; running games remain open if you close VineDeck
 - Dark, light or system theme, with an accent colour and optional blurred custom background
-- Export and import the library as JSON, optionally including artwork
+- Export and import the library as JSON, or as a ZIP archive with artwork
 - **Steam Proton support**: detected builds can be selected instead of System Wine from the top bar or *Settings → Wine* (see below)
 - Friendly error dialogs, rotating logs, keyboard shortcuts, tooltips and accessible names
 
