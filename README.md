@@ -23,6 +23,7 @@ _Screenshots show the application UI with generated sample cover art._
 - Grid, compact grid, list and large-cover views, with sorting and drag-and-drop custom ordering in All, Favorites and category views (select Custom Order; reverse sorting disables dragging)
 - Sort the library by name, date added, last played, launch count, category or custom order
 - Adjustable card grids include column count, size, gaps, corner radius and visible details; changes apply immediately
+- Appearance and layout controls can be previewed live in Settings without closing the window
 - Cover images (PNG/JPG/JPEG/WEBP, up to 60 MB) are copied as WebP files, resized to at most 2000 px per side, and cached as thumbnails; the source image is left untouched
 - Categories, favourites, Recently Played (ordered by launch time) and Most Played (ordered by launch count) views, plus case-insensitive, as-you-type search across names, categories and descriptions; every search term must match
 - Deleting a category keeps its applications in the library and makes them uncategorised
