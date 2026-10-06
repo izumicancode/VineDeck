@@ -34,6 +34,8 @@ VineDeck does not currently manage Bottles, Lutris or Heroic installations, or f
 
 Exports without artwork are JSON files. Exports with artwork are ZIP archives containing `library.json` and an `artwork/` directory; neither format packages executable files, Wine prefix contents, or the full launch history.
 
+Import merges entries into the current library. Entries already present are skipped rather than overwritten, and VineDeck reports how many were added or skipped.
+
 ## Quick start
 
 Install VineDeck using an option in *Installation* or *Packaging*, then follow these steps:
