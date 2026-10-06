@@ -22,7 +22,7 @@ _Screenshots show the application UI with generated sample cover art._
 - A Wine prefix contains a Windows-style drive and registry. Separate prefixes keep each application's environment independent.
 - Grid, compact grid, list and large-cover views, with sorting and drag-and-drop custom ordering
 - Adjustable card grids include column count, size, gaps, corner radius and visible details; changes apply immediately
-- Cover images (PNG/JPG/JPEG/WEBP) are stored in VineDeck’s data folder with cached thumbnails; executable icons are extracted when possible
+- Cover images (PNG/JPG/JPEG/WEBP) are copied into VineDeck’s data folder with cached thumbnails; the source image is left untouched
 - Categories, favourites, Recently and Most Played views, plus as-you-type search
 - Launch states (Launching… / Running / Closed / Failed) update without blocking the UI; running games remain open if you close VineDeck
 - Dark, light or system theme, with an accent colour and optional blurred custom background
