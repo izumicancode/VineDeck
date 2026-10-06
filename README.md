@@ -49,6 +49,8 @@ Install VineDeck using an option in *Installation* or *Packaging*, then follow t
   VineDeck launches `.lnk` shortcuts through Wine's `start /unix` command.
 4. Save the entry and launch it from the library.
 
+Removing an entry only removes its library record and VineDeck-managed artwork; the executable, its files and its Wine prefix are left in place.
+
 ## Using Proton from Steam
 
 VineDeck searches Steam's Proton install locations automatically; no path configuration is needed:
