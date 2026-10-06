@@ -183,7 +183,7 @@ cd packaging
 makepkg -si          # builds and installs the package
 ```
 
-For a quick package-level smoke test without building the full Arch package, run `python -m build` from the repository root and confirm the wheel can be produced cleanly.
+For a quick package-level smoke test without building the full Arch package, install the `build` frontend in your active Python environment with `python -m pip install build`, then run `python -m build` from the repository root and confirm the wheel can be produced cleanly.
 
 This installs the `vinedeck` command, the application-menu entry (`/usr/share/applications/vinedeck.desktop`), the icon
 and the license files (`LICENSE`, `NOTICE`). Afterwards VineDeck appears in your launcher like any other app. To remove it:
