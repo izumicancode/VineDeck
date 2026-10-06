@@ -46,6 +46,7 @@ Install VineDeck using an option in *Installation* or *Packaging*, then follow t
 2. Launch VineDeck and select **Add Your First Application** (or **+ Add Application** when the library is not empty).
 3. Select the Windows `.exe` or `.lnk` file. Set a working directory, launch arguments, environment variables, or an existing Wine prefix if needed. Enter arguments as a command-line string; quote values that contain spaces. VineDeck parses the string into arguments and does not invoke a shell.
   A custom prefix must already exist; create one with `WINEPREFIX="$HOME/Games/MyGame" wineboot`. If you leave the prefix unset, Wine uses its default prefix. An empty working directory uses the executable's folder.
+  VineDeck launches `.lnk` shortcuts through Wine's `start /unix` command.
 4. Save the entry and launch it from the library.
 
 ## Using Proton from Steam
