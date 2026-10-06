@@ -36,6 +36,8 @@ Exports without artwork are JSON files. Exports with artwork are ZIP archives co
 
 Import merges entries into the current library. Entries already present are skipped rather than overwritten, and VineDeck reports how many were added or skipped.
 
+Exports keep the executable and prefix paths as references, not as files. On another machine, place those files where the saved paths resolve or edit each imported entry before launching it.
+
 ## Quick start
 
 Install VineDeck using an option in *Installation* or *Packaging*, then follow these steps:
