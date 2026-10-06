@@ -152,7 +152,7 @@ These are the default locations; VineDeck respects the corresponding XDG environ
 
 To reset generated data without changing the library, delete `~/.cache/vinedeck/` and relaunch; VineDeck rebuilds thumbnails and theme assets as needed.
 
-For a portable library backup, export JSON with artwork. For a full profile backup, close VineDeck and copy the configuration and data directories; the cache is reproducible. To test a clean profile without affecting your install, set `XDG_CONFIG_HOME`, `XDG_DATA_HOME` and `XDG_CACHE_HOME` to temporary directories before launch.
+For a portable library backup, export a ZIP with artwork. For a full profile backup, close VineDeck and copy the configuration and data directories; the cache is reproducible. To test a clean profile without affecting your install, set `XDG_CONFIG_HOME`, `XDG_DATA_HOME` and `XDG_CACHE_HOME` to temporary directories before launch.
 
 ### Architecture
 
