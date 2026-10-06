@@ -278,7 +278,7 @@ builds are settled.
 - **“The selected Wine prefix does not exist”** – prefixes must exist before use. Create one with `WINEPREFIX=~/Games/MyGame wineboot`.
 - **Application closes immediately (“Failed”)** – open *View Details* in the dialog or read `~/.local/share/vinedeck/logs/launch-<id>.log` for Wine’s output.
 - **No tray/window icon on Wayland** – make sure the `.desktop` file is installed (the app id is `vinedeck`).
-- **Blank rendering on odd GPUs** – try `QT_QUICK_BACKEND=software` or `QT_QPA_PLATFORM=xcb`/`wayland` explicitly.
+- **Blank rendering on some setups** – try `QT_QPA_PLATFORM=xcb` or `wayland` explicitly.
 - Logs: `~/.local/share/vinedeck/logs/vinedeck.log`.
 
 ## Keyboard shortcuts
