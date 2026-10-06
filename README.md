@@ -24,6 +24,7 @@ _Screenshots show the application UI with generated sample cover art._
 - Adjustable card grids include column count, size, gaps, corner radius and visible details; changes apply immediately
 - Cover images (PNG/JPG/JPEG/WEBP, up to 60 MB) are copied as WebP files, resized to at most 2000 px per side, and cached as thumbnails; the source image is left untouched
 - Categories, favourites, Recently Played (ordered by launch time) and Most Played (ordered by launch count) views, plus case-insensitive, as-you-type search across names, categories and descriptions
+- Deleting a category keeps its applications in the library and makes them uncategorised
 - Launch states (Launching… / Running / Closed / Failed) update without blocking the UI; running games remain open if you close VineDeck
 - Dark, light or system theme, with an accent colour and optional blurred custom background
 - Export and import the library as JSON, or as a ZIP archive with artwork
