@@ -23,7 +23,7 @@ _Screenshots show the application UI with generated sample cover art._
 - Grid, compact grid, list and large-cover views, with sorting and drag-and-drop custom ordering in All, Favorites and category views
 - Adjustable card grids include column count, size, gaps, corner radius and visible details; changes apply immediately
 - Cover images (PNG/JPG/JPEG/WEBP, up to 60 MB) are copied as WebP files, resized to at most 2000 px per side, and cached as thumbnails; the source image is left untouched
-- Categories, favourites, Recently Played (ordered by launch time) and Most Played (ordered by launch count) views, plus case-insensitive, as-you-type search across names, categories and descriptions
+- Categories, favourites, Recently Played (ordered by launch time) and Most Played (ordered by launch count) views, plus case-insensitive, as-you-type search across names, categories and descriptions; every search term must match
 - Deleting a category keeps its applications in the library and makes them uncategorised
 - Optional developer, publisher, version, genre, release year and website details can be entered for each application
 - Launch states (Launching… / Running / Closed / Failed) update without blocking the UI; running games remain open if you close VineDeck
