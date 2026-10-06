@@ -18,7 +18,7 @@ _Screenshots show the application UI with generated sample cover art._
 
 ## Features
 
-- Add a `.exe` (or `.lnk`) with an optional **Wine prefix**, working directory, launch arguments and environment variables
+- Add a `.exe` (or `.lnk`) with an optional **Wine prefix**, working directory, launch arguments and per-application environment variables that override inherited values
 - A Wine prefix contains a Windows-style drive and registry. Separate prefixes keep each application's environment independent.
 - Grid, compact grid, list and large-cover views, with sorting and drag-and-drop custom ordering in All, Favorites and category views
 - Adjustable card grids include column count, size, gaps, corner radius and visible details; changes apply immediately
