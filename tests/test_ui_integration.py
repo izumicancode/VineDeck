@@ -136,6 +136,8 @@ def test_validation_blocks_bad_input(env, tmp_path):
     win, ctx, exe, cover = env
     dlg = ApplicationDialog(ctx, win)
     assert not dlg.cover.clear_btn.isEnabled() and not dlg.icon.clear_btn.isEnabled()
+    assert dlg.cover.preview.accessibleName() == "Cover preview"
+    assert dlg.icon.preview.accessibleName() == "Icon preview"
     dlg.cover.set_image(Image.new("RGB", (2, 2)), QPixmap(2, 2))
     assert dlg.cover.clear_btn.isEnabled()
     dlg.accept()

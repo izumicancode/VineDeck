@@ -147,6 +147,7 @@ class ImagePicker(QWidget):
         self.cleared = False
         self._title = title
         self.preview = PreviewBox(size, placeholder)
+        self.preview.setAccessibleName(f"{title} preview")
         self.select_btn = make_button("Select Image…", tooltip=f"Select {title.lower()} image")
         self.clear_btn = make_button("Remove", "ghost", tooltip=f"Remove {title.lower()}")
         self.select_btn.clicked.connect(self._choose)
