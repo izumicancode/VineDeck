@@ -284,6 +284,17 @@ def test_long_category_name_is_available_as_tooltip(env):
     assert win.sidebar._cat_buttons[category.id].toolTip() == name
 
 
+def test_library_favorite_can_be_toggled_from_keyboard(env):
+    win, ctx, exe, _cover = env
+    application = ctx.db.add_application(Application(name="Keyboard Favorite", executable_path=str(exe)))
+    win.reload()
+    win.view.setFocus()
+    win.view.setCurrentIndex(win.model.index(0))
+    QTest.keyClick(win.view, Qt.Key_F)
+    assert ctx.db.get_application(application.id).favorite
+    assert "F to toggle favorite" in win.view.accessibleDescription()
+
+
 def test_topbar_controls_fit_at_minimum_window_width(env):
     win, _ctx, _exe, _cover = env
     win.runner_combo.addItem("A long Proton runner label", "proton:test")

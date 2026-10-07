@@ -48,7 +48,7 @@ class LibraryView(QListView):
         self.viewport().setAutoFillBackground(False)
         self.setViewportMargins(0, 0, 0, 0)
         self.setAccessibleName("Application library")
-        self.setAccessibleDescription("Use the arrow keys to move, Enter to launch, Delete to remove.")
+        self.setAccessibleDescription("Use the arrow keys to move, Enter to launch, F to toggle favorite, Delete to remove.")
         self._pressed: tuple[int, str] | None = None
         self.setDefaultDropAction(Qt.CopyAction)
         self.set_reorder_enabled(False)
@@ -184,6 +184,9 @@ class LibraryView(QListView):
             return
         if idx.isValid() and e.key() == Qt.Key_Delete:
             self.remove_requested.emit(idx.data(IdRole))
+            return
+        if idx.isValid() and e.key() == Qt.Key_F:
+            self.favorite_toggled.emit(idx.data(IdRole))
             return
         super().keyPressEvent(e)
 
