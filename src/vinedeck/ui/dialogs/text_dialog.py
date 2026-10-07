@@ -2,17 +2,18 @@
 
 from __future__ import annotations
 
+from PySide6.QtCore import QSize
 from PySide6.QtGui import QFontDatabase, QGuiApplication
 from PySide6.QtWidgets import QDialog, QHBoxLayout, QPlainTextEdit, QVBoxLayout
 
-from ..widgets import make_button
+from ..widgets import fit_dialog, make_button
 
 
 class TextDialog(QDialog):
     def __init__(self, parent, title: str, text: str):
         super().__init__(parent)
         self.setWindowTitle(title)
-        self.resize(640, 420)
+        fit_dialog(self, QSize(640, 420))
         lay = QVBoxLayout(self)
         lay.setContentsMargins(20, 20, 20, 16)
         self.view = QPlainTextEdit(text)

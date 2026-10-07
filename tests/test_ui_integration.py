@@ -324,6 +324,15 @@ def test_dialog_size_respects_small_screen():
     assert _fit_dialog_size(QSize(640, 760), QSize(500, 400)) == QSize(452, 352)
 
 
+def test_configuration_viewer_fits_available_screen(qapp):
+    from vinedeck.ui.dialogs.text_dialog import TextDialog
+
+    dialog = TextDialog(None, "Configuration", "Configuration details")
+    available = dialog.screen().availableGeometry().size()
+    assert dialog.width() <= available.width() - 48
+    assert dialog.height() <= available.height() - 48
+
+
 def test_system_theme_reacts_to_platform_color_scheme(env, monkeypatch):
     _win, ctx, _exe, _cover = env
     ctx.settings.set("theme", "system")
