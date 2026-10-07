@@ -259,6 +259,8 @@ def test_sidebar_collapse_and_custom_grid_applies_immediately(env):
     win, ctx, exe, cover = env
     win.toggle_sidebar()
     assert ctx.settings["sidebar_collapsed"] is True
+    assert win.sidebar.settings_btn.text() == ""
+    assert win.sidebar.settings_btn.accessibleName() == "Settings"
     for i in range(30):
         ctx.db.add_application(Application(name=f"App {i}", executable_path=str(exe)))
     win.reload()

@@ -97,6 +97,7 @@ class Sidebar(QFrame):
     def _plain_nav(self, text, icon, signal) -> QPushButton:
         b = QPushButton(text)
         b.setObjectName("Nav")
+        b.setAccessibleName(text)
         b.setCursor(Qt.PointingHandCursor)
         b.setToolTip("Settings (Ctrl+,)")
         b.clicked.connect(signal)
