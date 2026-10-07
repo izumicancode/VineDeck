@@ -76,6 +76,8 @@ class ListHeader(QFrame):
         self.setObjectName("ListHeader")
         self.setFixedHeight(30)
         self.names = ("NAME", "CATEGORY", "LAST PLAYED")
+        self.setAccessibleName("Application list columns")
+        self.setAccessibleDescription("Name, Category, Last Played")
 
     def paintEvent(self, e):
         super().paintEvent(e)

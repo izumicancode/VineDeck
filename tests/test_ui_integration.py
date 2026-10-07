@@ -297,6 +297,16 @@ def test_library_favorite_can_be_toggled_from_keyboard(env):
     assert "F to toggle favorite" in win.view.accessibleDescription()
 
 
+def test_list_mode_accessibility_exposes_columns_and_last_played(env):
+    win, ctx, exe, _cover = env
+    application = ctx.db.add_application(Application(name="Accessible List", executable_path=str(exe),
+                                                     last_played="2024-01-15T00:00:00+00:00"))
+    win.reload()
+    item_text = win.model.data(win.model.index(0), Qt.AccessibleTextRole)
+    assert "Last played:" in item_text and application.name in item_text
+    assert win.list_header.accessibleDescription() == "Name, Category, Last Played"
+
+
 def test_topbar_controls_fit_at_minimum_window_width(env):
     win, _ctx, _exe, _cover = env
     win.runner_combo.addItem("A long Proton runner label", "proton:test")

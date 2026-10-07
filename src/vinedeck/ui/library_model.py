@@ -5,6 +5,7 @@ from __future__ import annotations
 from PySide6.QtCore import QAbstractListModel, QMimeData, QModelIndex, Qt, Signal
 
 from ..database.models import Application
+from .formatting import format_last_played
 
 AppRole = Qt.UserRole + 1
 StateRole = Qt.UserRole + 2
@@ -64,7 +65,8 @@ class LibraryModel(QAbstractListModel):
         if role == StateRole:
             return self._states.get(app.id)
         if role == Qt.AccessibleTextRole:
-            bits = [app.name, app.category_name or "Uncategorised"]
+            bits = [app.name, app.category_name or "Uncategorised",
+                    f"Last played: {format_last_played(app.last_played)}"]
             if app.favorite:
                 bits.append("favorite")
             if self._states.get(app.id):
