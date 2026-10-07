@@ -186,6 +186,7 @@ class MainWindow(QMainWindow):
         self.search.setObjectName("Search")
         self.search.setPlaceholderText("Search  (Ctrl+F)")
         self.search.setClearButtonEnabled(True)
+        self.search.setMinimumWidth(130)
         self.search.setAccessibleName("Search applications")
         self.search_action = QAction(self)
         self.search.addAction(self.search_action, QLineEdit.LeadingPosition)
@@ -214,6 +215,7 @@ class MainWindow(QMainWindow):
         self.runner_combo.setAccessibleName("Runner")
         self.runner_combo.setToolTip("Choose how applications are launched: system Wine or a Steam Proton build")
         self.runner_combo.setMaximumWidth(230)
+        self.runner_combo.setMinimumContentsLength(1)
         self.runner_combo.setMaxVisibleItems(10)
         self.runner_combo.activated.connect(lambda i: self.s.set("runner", self.runner_combo.itemData(i)))
         self.rev_btn = QToolButton()
@@ -254,6 +256,12 @@ class MainWindow(QMainWindow):
         self._banner_frame = f
         wrap.setObjectName("BannerWrap")
         return wrap
+
+    def resizeEvent(self, event) -> None:
+        super().resizeEvent(event)
+        compact = self.width() < 900
+        self.search.setMinimumWidth(130 if compact else 220)
+        self.runner_combo.setMaximumWidth(150 if compact else 230)
 
     def _connect(self) -> None:
         sb, v = self.sidebar, self.view

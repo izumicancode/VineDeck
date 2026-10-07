@@ -7,6 +7,7 @@ import pytest
 from PIL import Image
 from PySide6.QtCore import Qt, QEventLoop, QTimer
 from PySide6.QtTest import QTest
+from PySide6.QtWidgets import QApplication
 
 from vinedeck.app_context import AppContext
 from vinedeck.core import launcher
@@ -265,6 +266,20 @@ def test_sidebar_collapse_and_custom_grid_applies_immediately(env):
     ctx.settings.set("grid_columns", 0)
     ctx.settings.set("card_width", 300)
     assert win.view.delegate.cell.width() >= 300
+
+
+def test_topbar_controls_fit_at_minimum_window_width(env):
+    win, _ctx, _exe, _cover = env
+    win.runner_combo.addItem("A long Proton runner label", "proton:test")
+    win.runner_combo.setCurrentIndex(win.runner_combo.count() - 1)
+    win.runner_combo.show()
+    win.resize(760, 600)
+    QApplication.processEvents()
+    controls = [win.menu_btn, win.brand, win.search, *win.view_btns.values(),
+                win.runner_combo, win.sort_combo, win.rev_btn, win.settings_btn]
+    visible = sorted((control for control in controls if control.isVisible()), key=lambda control: control.x())
+    assert all(left.x() + left.width() <= right.x() for left, right in zip(visible, visible[1:]))
+    assert win.settings_btn.x() + win.settings_btn.width() <= win.menu_btn.parentWidget().width()
 
 
 def _fake_proton_home(tmp_path, monkeypatch):

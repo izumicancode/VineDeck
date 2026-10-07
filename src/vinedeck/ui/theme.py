@@ -121,7 +121,7 @@ QLineEdit, QPlainTextEdit, QTextEdit, QSpinBox, QComboBox, QTableWidget {{
     background: {p.surface}; border: 1px solid {p.border}; border-radius: {r}px; padding: 7px 10px;
     selection-background-color: {p.accent}; selection-color: {p.accent_text}; }}
 QLineEdit:focus, QPlainTextEdit:focus, QTextEdit:focus, QSpinBox:focus, QComboBox:focus {{ border: 2px solid {p.accent}; padding: 6px 9px; }}
-QLineEdit#Search {{ border-radius: {18 if not square else 0}px; padding: 7px 14px; background: {p.bg}; min-width: 220px; }}
+QLineEdit#Search {{ border-radius: {18 if not square else 0}px; padding: 7px 14px; background: {p.bg}; }}
 QComboBox::drop-down {{ border: 0; width: 26px; }}
 QComboBox::down-arrow {{ image: url({assets['chevron-down']}); width: 14px; height: 14px; }}
 QComboBox QAbstractItemView {{ background: {p.surface2}; border: 1px solid {p.border}; selection-background-color: {p.accent};
