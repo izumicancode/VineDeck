@@ -175,7 +175,8 @@ class Sidebar(QFrame):
         c = self._collapsed
         for b, text, _icon in self._buttons:
             b.setText("" if c else text)
-            b.setToolTip(text if c else ("Settings (Ctrl+,)" if text == "Settings" else ""))
+            b.setToolTip(text if c or b.property("key") == "category"
+                         else ("Settings (Ctrl+,)" if text == "Settings" else ""))
         self.add_btn.setText("" if c else "Add Application")
         for w in (self.lib_header, self.cat_header):
             w.setVisible(not c)

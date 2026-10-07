@@ -272,6 +272,14 @@ def test_sidebar_collapse_and_custom_grid_applies_immediately(env):
     assert win.view.delegate.cell.width() >= 300
 
 
+def test_long_category_name_is_available_as_tooltip(env):
+    win, ctx, _exe, _cover = env
+    name = "A very long category name that does not fit in the sidebar"
+    category = ctx.db.add_category(name)
+    win.reload()
+    assert win.sidebar._cat_buttons[category.id].toolTip() == name
+
+
 def test_topbar_controls_fit_at_minimum_window_width(env):
     win, _ctx, _exe, _cover = env
     win.runner_combo.addItem("A long Proton runner label", "proton:test")
