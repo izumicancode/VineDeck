@@ -446,6 +446,7 @@ def test_settings_dialog_runner_picker(tmp_path, qapp, monkeypatch, fake_wine):
     dlg = SettingsDialog(ctx, {"wine_changed": seen.append, "export": lambda: None, "import": lambda: None},
                          None, "Wine")
     try:
+        assert dlg.width() <= dlg.screen().availableGeometry().width() - 48
         box = dlg.runner_box
         ids = [box.itemData(i) for i in range(box.count())]
         assert ids == ["wine", f"proton:{script}"] and box.currentData() == "wine"

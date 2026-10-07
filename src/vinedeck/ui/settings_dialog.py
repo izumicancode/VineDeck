@@ -6,7 +6,7 @@ import shutil
 import uuid
 from pathlib import Path
 
-from PySide6.QtCore import Qt, QUrl
+from PySide6.QtCore import QSize, Qt, QUrl
 from PySide6.QtGui import QColor, QDesktopServices, QIcon
 from PySide6.QtWidgets import (QButtonGroup, QCheckBox, QColorDialog, QComboBox, QDialog, QFileDialog,
                                QFormLayout, QFrame, QGroupBox, QHBoxLayout, QLineEdit, QListWidget, QMessageBox,
@@ -24,7 +24,7 @@ from ..services.image_service import ImageError
 from ..utils.config import DEFAULTS, RANGES
 from ..utils.platform import session_type
 from .dialogs.error_dialog import show_error
-from .widgets import IMAGE_FILTER, PathField, label, make_button
+from .widgets import IMAGE_FILTER, PathField, fit_dialog, label, make_button
 
 SECTIONS = ["General", "Customization", "Appearance", "Library", "Wine", "Advanced", "About"]
 RATIOS = {"Poster (2:3)": 1.5, "Box art (3:4)": 4 / 3, "Square (1:1)": 1.0, "Wide (16:9)": 9 / 16}
@@ -68,7 +68,7 @@ class SettingsDialog(QDialog):
         super().__init__(parent)
         self.ctx, self.s, self.actions = ctx, ctx.settings, actions
         self.setWindowTitle("Settings")
-        self.resize(780, 600)
+        fit_dialog(self, QSize(780, 600))
         root = QHBoxLayout(self)
         root.setContentsMargins(0, 0, 0, 0)
         root.setSpacing(0)
