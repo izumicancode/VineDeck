@@ -2,12 +2,13 @@
 
 from __future__ import annotations
 
-from PySide6.QtCore import Qt
+from PySide6.QtCore import QSize, Qt
+from PySide6.QtGui import QGuiApplication
 from PySide6.QtWidgets import QDialog, QHBoxLayout, QLabel, QPlainTextEdit, QVBoxLayout, QWidget
 
 from ...utils.logging import get_logger
 from .. import icons
-from ..widgets import label, make_button
+from ..widgets import fit_dialog, label, make_button
 
 log = get_logger("ui")
 
@@ -18,7 +19,9 @@ class ErrorDialog(QDialog):
         super().__init__(parent)
         self.setWindowTitle(title)
         self.setModal(True)
-        self.setMinimumWidth(460)
+        screen = self.screen() or QGuiApplication.primaryScreen()
+        available_width = screen.availableGeometry().width() if screen else 508
+        self.setMinimumWidth(max(1, min(460, available_width - 48)))
         root = QVBoxLayout(self)
         root.setContentsMargins(24, 22, 24, 18)
         root.setSpacing(12)
@@ -60,6 +63,7 @@ class ErrorDialog(QDialog):
         row.addStretch(1)
         row.addWidget(ok)
         root.addLayout(row)
+        fit_dialog(self, QSize(520, 420))
         ok.setFocus()
 
     def _toggle(self) -> None:

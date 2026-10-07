@@ -348,6 +348,13 @@ def test_configuration_viewer_fits_available_screen(qapp):
     assert dialog.height() <= available.height() - 48
 
 
+def test_error_dialog_minimum_width_respects_screen(qapp):
+    from vinedeck.ui.dialogs.error_dialog import ErrorDialog
+
+    dialog = ErrorDialog(None, "Launch failed", "The application could not start.")
+    assert dialog.minimumWidth() <= dialog.screen().availableGeometry().width() - 48
+
+
 def test_system_theme_reacts_to_platform_color_scheme(env, monkeypatch):
     _win, ctx, _exe, _cover = env
     ctx.settings.set("theme", "system")
