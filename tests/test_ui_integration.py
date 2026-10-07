@@ -6,6 +6,7 @@ import time
 import pytest
 from PIL import Image
 from PySide6.QtCore import Qt, QEventLoop, QTimer
+from PySide6.QtGui import QPixmap
 from PySide6.QtTest import QTest
 from PySide6.QtWidgets import QApplication, QWidget
 from PySide6.QtWidgets import QScrollArea
@@ -134,6 +135,9 @@ def test_first_run_welcome_then_add_edit_search_favorite_filter(env):
 def test_validation_blocks_bad_input(env, tmp_path):
     win, ctx, exe, cover = env
     dlg = ApplicationDialog(ctx, win)
+    assert not dlg.cover.clear_btn.isEnabled() and not dlg.icon.clear_btn.isEnabled()
+    dlg.cover.set_image(Image.new("RGB", (2, 2)), QPixmap(2, 2))
+    assert dlg.cover.clear_btn.isEnabled()
     dlg.accept()
     assert dlg.result_application is None and "name" in dlg.error.text().lower()
     dlg.name.setText("X")

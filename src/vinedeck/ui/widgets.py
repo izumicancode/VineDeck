@@ -151,6 +151,7 @@ class ImagePicker(QWidget):
         self.clear_btn = make_button("Remove", "ghost", tooltip=f"Remove {title.lower()}")
         self.select_btn.clicked.connect(self._choose)
         self.clear_btn.clicked.connect(self.clear)
+        self.clear_btn.setEnabled(False)
         col = QVBoxLayout()
         col.setSpacing(8)
         col.addWidget(self.select_btn)
