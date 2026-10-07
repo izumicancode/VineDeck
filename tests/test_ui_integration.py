@@ -333,6 +333,16 @@ def test_long_toast_stays_inside_parent(qapp):
     assert toast.y() + toast.height() <= parent.height()
 
 
+def test_long_toast_stays_inside_short_parent(qapp):
+    parent = QWidget()
+    parent.resize(320, 80)
+    toast = Toast(parent)
+    toast.show_message("LongApplicationName" * 40)
+    qapp.processEvents()
+    assert toast.x() >= 0 and toast.x() + toast.width() <= parent.width()
+    assert toast.y() >= 0 and toast.y() + toast.height() <= parent.height()
+
+
 def test_dialog_size_respects_small_screen():
     from PySide6.QtCore import QSize
 
