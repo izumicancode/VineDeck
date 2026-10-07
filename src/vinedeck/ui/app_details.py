@@ -4,7 +4,8 @@ from __future__ import annotations
 
 from PySide6.QtCore import QRectF, QSize, Qt, Signal
 from PySide6.QtGui import QColor, QLinearGradient, QPainter, QPainterPath, QPixmap
-from PySide6.QtWidgets import (QFrame, QGridLayout, QHBoxLayout, QScrollArea, QSizePolicy, QVBoxLayout, QWidget)
+from PySide6.QtWidgets import (QBoxLayout, QFrame, QGridLayout, QHBoxLayout, QScrollArea, QSizePolicy,
+                               QVBoxLayout, QWidget)
 
 from ..core.process_manager import LaunchState
 from ..core.scanner import default_prefix
@@ -104,6 +105,7 @@ class DetailsPage(QWidget):
         self.fav.clicked.connect(lambda: self._app and self.favorite_toggled.emit(self._app.id))
         info.addWidget(self.fav, 0, Qt.AlignLeft)
         btns = QHBoxLayout()
+        self.action_layout = btns
         btns.setSpacing(10)
         self.play = make_button("PLAY", "primary", big=True)
         self.play.clicked.connect(lambda: self._app and self.play_requested.emit(self._app.id))
@@ -135,6 +137,15 @@ class DetailsPage(QWidget):
         col.addStretch(1)
         self.retheme()
         self.theme.changed.connect(self.retheme)
+
+    def resizeEvent(self, event) -> None:
+        super().resizeEvent(event)
+        compact = self.width() < 620
+        self.cover.setFixedSize(QSize(150, 225) if compact else COVER_SIZE)
+        self.hero.layout().setContentsMargins(*((18, 18, 18, 18) if compact else (30, 30, 30, 30)))
+        self.hero.layout().setSpacing(18 if compact else 30)
+        self.action_layout.setDirection(QBoxLayout.TopToBottom if compact else QBoxLayout.LeftToRight)
+        self.action_layout.setSpacing(6 if compact else 10)
 
     def _panel(self, title: str):
         f = QFrame()

@@ -8,6 +8,7 @@ from PIL import Image
 from PySide6.QtCore import Qt, QEventLoop, QTimer
 from PySide6.QtTest import QTest
 from PySide6.QtWidgets import QApplication
+from PySide6.QtWidgets import QScrollArea
 
 from vinedeck.app_context import AppContext
 from vinedeck.core import launcher
@@ -280,6 +281,18 @@ def test_topbar_controls_fit_at_minimum_window_width(env):
     visible = sorted((control for control in controls if control.isVisible()), key=lambda control: control.x())
     assert all(left.x() + left.width() <= right.x() for left, right in zip(visible, visible[1:]))
     assert win.settings_btn.x() + win.settings_btn.width() <= win.menu_btn.parentWidget().width()
+
+
+def test_details_hero_fits_at_minimum_window_width(env):
+    win, ctx, exe, _cover = env
+    app = ctx.db.add_application(Application(name="Narrow Details", executable_path=str(exe)))
+    win.resize(760, 600)
+    win.show()
+    win.open_details(app.id)
+    QApplication.processEvents()
+    scroll = win.details.findChild(QScrollArea)
+    assert win.details.cover.width() == 150
+    assert scroll.horizontalScrollBar().maximum() == 0
 
 
 def _fake_proton_home(tmp_path, monkeypatch):
