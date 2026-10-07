@@ -308,6 +308,19 @@ def test_long_toast_stays_inside_parent(qapp):
     assert toast.y() + toast.height() <= parent.height()
 
 
+def test_system_theme_reacts_to_platform_color_scheme(env, monkeypatch):
+    _win, ctx, _exe, _cover = env
+    ctx.settings.set("theme", "system")
+    applied = []
+    monkeypatch.setattr(ctx.theme, "apply", lambda: applied.append(True))
+    ctx.theme._system_scheme_changed(None)
+    assert applied == [True]
+    ctx.settings.set("theme", "dark")
+    applied.clear()
+    ctx.theme._system_scheme_changed(None)
+    assert not applied
+
+
 def _fake_proton_home(tmp_path, monkeypatch):
     """A throw-away HOME containing a Steam install with one fake Proton build that records its calls."""
     home = tmp_path / "home"

@@ -178,9 +178,16 @@ class ThemeManager(QObject):
         self._cache = theme_cache
         self.palette = make_palette(settings["theme"], settings["accent"])
         settings.subscribe(self._on_setting)
+        scheme_changed = getattr(QGuiApplication.styleHints(), "colorSchemeChanged", None)
+        if scheme_changed is not None:
+            scheme_changed.connect(self._system_scheme_changed)
 
     def _on_setting(self, key: str, _value) -> None:
         if key in ("theme", "accent", "card_style"):
+            self.apply()
+
+    def _system_scheme_changed(self, _scheme) -> None:
+        if self.settings["theme"] == "system":
             self.apply()
 
     @property
