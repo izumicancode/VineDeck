@@ -16,7 +16,7 @@ from vinedeck.database.models import Application
 from vinedeck.ui import main_window as mw_mod
 from vinedeck.ui.application_dialog import ApplicationDialog
 from vinedeck.ui.library_model import MIME
-from vinedeck.ui.widgets import Toast
+from vinedeck.ui.widgets import Toast, _fit_dialog_size
 from vinedeck.utils.paths import AppPaths
 
 
@@ -316,6 +316,12 @@ def test_long_toast_stays_inside_parent(qapp):
     assert toast.x() + toast.width() <= parent.width()
     assert toast.y() >= 0
     assert toast.y() + toast.height() <= parent.height()
+
+
+def test_dialog_size_respects_small_screen():
+    from PySide6.QtCore import QSize
+
+    assert _fit_dialog_size(QSize(640, 760), QSize(500, 400)) == QSize(452, 352)
 
 
 def test_system_theme_reacts_to_platform_color_scheme(env, monkeypatch):

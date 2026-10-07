@@ -16,7 +16,7 @@ from ..database.models import Application
 from ..services import filesystem_service as fs
 from ..services.icon_service import extract_exe_icon
 from ..services.image_service import ImageError
-from .widgets import ImagePicker, PathField, label, make_button
+from .widgets import ImagePicker, PathField, fit_dialog, label, make_button
 
 NEW_CATEGORY = "New category…"
 
@@ -44,7 +44,7 @@ class ApplicationDialog(QDialog):
         self.obsolete_artwork: list[tuple[str, str]] = []     # (kind, name)
         self.setWindowTitle("Edit Application" if self.editing else "Add Application")
         self.setModal(True)
-        self.resize(640, 760)
+        fit_dialog(self, QSize(640, 760))
 
         outer = QVBoxLayout(self)
         outer.setContentsMargins(0, 0, 0, 0)

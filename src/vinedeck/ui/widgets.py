@@ -5,7 +5,7 @@ from __future__ import annotations
 from pathlib import Path
 
 from PySide6.QtCore import QEvent, QRectF, QSize, Qt, QTimer, Signal
-from PySide6.QtGui import QPainter, QPainterPath, QPen, QPixmap
+from PySide6.QtGui import QGuiApplication, QPainter, QPainterPath, QPen, QPixmap
 from PySide6.QtWidgets import (QCompleter, QFileDialog, QHBoxLayout, QLabel, QLineEdit, QPushButton,
                                QVBoxLayout, QWidget)
 
@@ -13,6 +13,19 @@ from . import icons
 
 IMAGE_FILTER = "Images (*.png *.jpg *.jpeg *.webp *.PNG *.JPG *.JPEG *.WEBP)"
 EXE_FILTER = "Windows programs (*.exe *.EXE *.lnk *.LNK);;All files (*)"
+
+
+def _fit_dialog_size(size: QSize, available: QSize, margin: int = 24) -> QSize:
+    return QSize(min(size.width(), max(1, available.width() - margin * 2)),
+                 min(size.height(), max(1, available.height() - margin * 2)))
+
+
+def fit_dialog(dialog: QWidget, size: QSize) -> None:
+    screen = dialog.screen() or QGuiApplication.primaryScreen()
+    if screen is None:
+        dialog.resize(size)
+        return
+    dialog.resize(_fit_dialog_size(size, screen.availableGeometry().size()))
 
 
 def make_button(text: str = "", variant: str | None = None, *, icon=None, big: bool = False,
