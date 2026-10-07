@@ -229,6 +229,7 @@ class Toast(QLabel):
         super().__init__(parent)
         self.setObjectName("Toast")
         self.setAlignment(Qt.AlignCenter)
+        self.setWordWrap(True)
         self.setAttribute(Qt.WA_TransparentForMouseEvents)
         self.setAccessibleName("Notification")
         self._timer = QTimer(self, singleShot=True)
@@ -246,7 +247,9 @@ class Toast(QLabel):
 
     def _place(self) -> None:
         p = self.parentWidget()
-        self.move((p.width() - self.width()) // 2, p.height() - self.height() - 28)
+        self.setMaximumWidth(max(1, p.width() - 32))
+        self.adjustSize()
+        self.move(max(0, (p.width() - self.width()) // 2), max(0, p.height() - self.height() - 28))
 
     def eventFilter(self, obj, e):
         if e.type() == QEvent.Resize and self.isVisible():

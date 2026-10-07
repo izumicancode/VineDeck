@@ -7,7 +7,7 @@ import pytest
 from PIL import Image
 from PySide6.QtCore import Qt, QEventLoop, QTimer
 from PySide6.QtTest import QTest
-from PySide6.QtWidgets import QApplication
+from PySide6.QtWidgets import QApplication, QWidget
 from PySide6.QtWidgets import QScrollArea
 
 from vinedeck.app_context import AppContext
@@ -16,6 +16,7 @@ from vinedeck.database.models import Application
 from vinedeck.ui import main_window as mw_mod
 from vinedeck.ui.application_dialog import ApplicationDialog
 from vinedeck.ui.library_model import MIME
+from vinedeck.ui.widgets import Toast
 from vinedeck.utils.paths import AppPaths
 
 
@@ -293,6 +294,18 @@ def test_details_hero_fits_at_minimum_window_width(env):
     scroll = win.details.findChild(QScrollArea)
     assert win.details.cover.width() == 150
     assert scroll.horizontalScrollBar().maximum() == 0
+
+
+def test_long_toast_stays_inside_parent(qapp):
+    parent = QWidget()
+    parent.resize(320, 240)
+    toast = Toast(parent)
+    toast.show_message("LongApplicationName" * 20)
+    qapp.processEvents()
+    assert toast.x() >= 0
+    assert toast.x() + toast.width() <= parent.width()
+    assert toast.y() >= 0
+    assert toast.y() + toast.height() <= parent.height()
 
 
 def _fake_proton_home(tmp_path, monkeypatch):
